@@ -44,7 +44,9 @@
     "swarm:advice": "tsx automation/agents/adviceAgent.ts",
     "swarm:creative": "tsx automation/agents/creativeSwarm.ts",
     "outreach:colombian": "tsx automation/agents/colombianOutreachAgent.ts",
-    "outreach:colombian:test": "tsx automation/agents/colombianOutreachAgent.ts 50"
+    "outreach:colombian:test": "tsx automation/agents/colombianOutreachAgent.ts 50",
+    "outreach:follow-up": "tsx automation/agents/colombianFollowUpAgent.ts",
+    "outreach:follow-up:generate": "tsx automation/agents/colombianFollowUpAgent.ts generate"
   },
   "dependencies": {
     "@huggingface/inference": "^2.6.4",
