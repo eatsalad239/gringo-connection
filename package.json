@@ -42,7 +42,13 @@
     "swarm:website": "tsx automation/agents/websiteBuilderAgent.ts",
     "swarm:code": "tsx automation/agents/codingAssistantAgent.ts",
     "swarm:advice": "tsx automation/agents/adviceAgent.ts",
-    "swarm:creative": "tsx automation/agents/creativeSwarm.ts"
+    "swarm:creative": "tsx automation/agents/creativeSwarm.ts",
+    "swarm:outreach": "tsx automation/agent-swarm-launcher.ts launch",
+    "swarm:discover": "tsx automation/business-discovery.ts discover",
+    "swarm:targets": "tsx automation/business-discovery.ts targets",
+    "swarm:forms": "tsx automation/rapid-form-filler.ts",
+    "swarm:agents": "tsx automation/form-filling-agents.ts launch",
+    "swarm:launch": "bash launch-agent-swarm.sh"
   },
   "dependencies": {
     "@huggingface/inference": "^2.6.4",
