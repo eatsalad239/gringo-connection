@@ -26,7 +26,11 @@
     "agents:qualify-leads": "tsx automation/agents/leadQualificationAgent.ts",
     "agents:dev-helper": "tsx automation/agents/devHelperAgent.ts",
     "agents:workflow": "tsx automation/agents/workflowAutomationAgent.ts",
-    "generate:code": "tsx automation/agents/codeGeneratorAgent.ts"
+    "agents:follow-up": "tsx automation/agents/followUpAgent.ts",
+    "agents:upsell": "tsx automation/agents/upsellAgent.ts",
+    "agents:swarm": "tsx automation/agents/swarmOrchestrator.ts",
+    "generate:code": "tsx automation/agents/codeGeneratorAgent.ts",
+    "email:eddy-agents": "tsx scripts/email-eddy-agents-package.ts"
   },
   "dependencies": {
     "@huggingface/inference": "^2.6.4",

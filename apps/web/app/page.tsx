@@ -1,5 +1,8 @@
-import { Hero } from '@/components/Hero';
-import { Services } from '@/components/Services';
+import { AnimatedHero } from '@/components/AnimatedHero';
+import { EnhancedServices } from '@/components/EnhancedServices';
+import { TechStackShowcase } from '@/components/TechStackShowcase';
+import { InteractiveDemo } from '@/components/InteractiveDemo';
+import { GrantReadyBadge } from '@/components/GrantReadyBadge';
 import { Testimonials } from '@/components/Testimonials';
 import { FAQ } from '@/components/FAQ';
 import { getContent } from '@/lib/content';
@@ -39,8 +42,11 @@ export default async function Home({
 
   return (
     <div>
-      <Hero content={content.hero} locale={locale} />
-      <Services content={content.services} locale={locale} />
+      <AnimatedHero content={content.hero} locale={locale} />
+      <GrantReadyBadge locale={locale} />
+      <TechStackShowcase locale={locale} />
+      <EnhancedServices content={content.services} locale={locale} />
+      <InteractiveDemo locale={locale} />
       <Testimonials content={content.testimonials} locale={locale} />
       <FAQ content={content.faq} locale={locale} />
     </div>
