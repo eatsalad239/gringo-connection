@@ -14,7 +14,7 @@ export function middleware(request: NextRequest) {
   
   // Default to English
   const response = NextResponse.next();
-  response.headers.set('x-locale', 'en', { append: false });
+  response.headers.set('x-locale', 'en');
   return response;
 }
 
