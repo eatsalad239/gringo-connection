@@ -16,6 +16,14 @@ const nextConfig = {
   productionBrowserSourceMaps: false,
   // Optimize fonts
   optimizeFonts: true,
+  // Cloudflare Pages: Disable cache generation to avoid 25MB file size limit
+  webpack: (config, { isServer }) => {
+    if (process.env.CI || process.env.CF_PAGES) {
+      // Disable webpack cache in CI/Cloudflare Pages to avoid large cache files
+      config.cache = false;
+    }
+    return config;
+  },
   // Cloudflare Pages: Explicitly set output directory
   // This helps Cloudflare detect Next.js server mode
   experimental: {

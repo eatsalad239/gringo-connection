@@ -1,6 +1,6 @@
 {
   "build": {
-    "command": "pnpm install --no-frozen-lockfile && pnpm build && rm -rf .next/cache",
+    "command": "pnpm install --no-frozen-lockfile && CF_PAGES=1 pnpm build && rm -rf .next/cache .next/.cache || true",
     "outputDirectory": ".next",
     "rootDirectory": "apps/web"
   },
