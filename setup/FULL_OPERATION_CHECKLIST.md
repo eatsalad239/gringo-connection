@@ -39,7 +39,7 @@
 - ⏳ Set up GitHub Actions secrets
 
 ### 4. **Cloudflare Pages Deployment** 🔄
-- ⏳ Sign up for Cloudflare
+- ✅ Signed up for Cloudflare
 - ⏳ Add domain: gringoconnection.com
 - ⏳ Create Pages project
 - ⏳ Connect GitHub repo
@@ -47,8 +47,8 @@
 - ⏳ Deploy via Cloudflare Pages
 
 ### 5. **Cloudflare Setup** 🔄
-- ⏳ Sign up/login
-- ⏳ Add domain (or keep on Vercel)
+- ✅ Signed up/login
+- ⏳ Add domain to Cloudflare
 - ⏳ Configure DNS
 - ⏳ Set up Email Routing (info@gringoconnection.com)
 
@@ -110,7 +110,7 @@ Once email and services are set up:
 2. 🔄 Email created
 3. 🔄 Services signed up
 4. ⏳ GitHub repo created
-5. ⏳ Vercel deployed
+5. ⏳ Cloudflare Pages deployed
 6. ⏳ Facebook tokens added (when admin)
 
 **Once GitHub repo is created, everything deploys automatically!**

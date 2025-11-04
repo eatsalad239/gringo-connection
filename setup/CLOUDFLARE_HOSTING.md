@@ -41,10 +41,12 @@ You're hosting on **Cloudflare Pages** (not Vercel). Here's the complete setup:
 3. Choose Free plan
 4. Get nameservers from Cloudflare
 
-### **Step 3: Move Domain from Vercel**
-1. In Vercel: Domain settings → Remove from Vercel (or update nameservers)
-2. Update nameservers at registrar to Cloudflare nameservers
-3. Wait for DNS propagation (15 min - 48 hours)
+### **Step 3: Add Domain to Cloudflare**
+1. In Cloudflare dashboard: "Add a Site"
+2. Enter: gringoconnection.com
+3. Cloudflare will scan existing DNS records
+4. Update nameservers at your domain registrar to Cloudflare nameservers
+5. Wait for DNS propagation (15 min - 48 hours)
 
 ### **Step 4: Cloudflare Pages Deployment**
 1. In Cloudflare: Pages → Create Project
@@ -65,19 +67,16 @@ You're hosting on **Cloudflare Pages** (not Vercel). Here's the complete setup:
 
 ---
 
-## 📋 **Domain Transfer Process**
+## 📋 **Domain Setup Process**
 
-### **Option A: Transfer Domain to Cloudflare**
-1. In Cloudflare: Domain → Transfer
-2. Get authorization code from Vercel
-3. Complete transfer (can take 5-7 days)
+### **Add Domain to Cloudflare**
+1. In Cloudflare dashboard: "Add a Site"
+2. Enter: gringoconnection.com
+3. Choose Free plan
+4. Update nameservers at your domain registrar to Cloudflare nameservers
+5. Wait for DNS propagation (15 min - 48 hours)
 
-### **Option B: Keep Domain at Vercel, Use Cloudflare DNS**
-1. In Vercel: Domain → DNS Settings
-2. Change nameservers to Cloudflare
-3. Manage DNS via Cloudflare
-
-**Recommended**: Option B (faster, no transfer needed)
+**Cloudflare will manage DNS and hosting - everything in one place!**
 
 ---
 

@@ -13,7 +13,7 @@
 - ⏳ Sign up for Plausible Analytics
 - ⏳ Sign up for Buffer (optional)
 - ⏳ Create GitHub repo
-- ⏳ Connect to Vercel
+- ⏳ Connect to Cloudflare Pages
 - ⏳ Deploy website
 
 ---
@@ -38,7 +38,7 @@
 3. ⏳ Get API keys/tokens
 4. ⏳ Add to environment variables
 5. ⏳ GitHub repo creation
-6. ⏳ Vercel deployment
+6. ⏳ Cloudflare Pages deployment
 7. ⏳ Cloudflare DNS setup
 8. ⏳ Full system test
 

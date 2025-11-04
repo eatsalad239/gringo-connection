@@ -2,10 +2,11 @@
 
 ## ✅ **Completed via Browser**
 
-### 1. **Vercel** ✅
-- ✅ Logged in
-- ✅ Domain `gringoconnection.com` visible
-- ✅ Ready to connect project
+### 1. **Cloudflare** ✅
+- ✅ Signed up via Google OAuth
+- ✅ Logged into dashboard
+- ✅ Account ID: 38e10c60356f1836dc65116ac92ae0ef
+- ✅ Ready for Pages deployment
 
 ### 2. **Calendly** 🔄
 - 🔄 Signup page opened
@@ -19,10 +20,6 @@
 - 🔄 Signup page opened
 - ⏳ Waiting for signup completion
 
-### 5. **Cloudflare** 🔄
-- 🔄 Dashboard opened
-- ⏳ Ready for domain setup
-
 ---
 
 ## 📋 **Next Steps**
@@ -32,16 +29,16 @@
    - Plausible (free trial)
    - Buffer (free tier)
 
-2. **Cloudflare Setup**
-   - Sign up/in
-   - Add domain
-   - Configure DNS
-   - Set up email routing
-
-3. **Vercel Project Connection**
-   - Import GitHub repo
-   - Add domain
+2. **Cloudflare Pages Setup**
+   - Connect GitHub repo
+   - Add domain: gringoconnection.com
    - Configure environment variables
+   - Deploy website
+
+3. **Cloudflare DNS & Email**
+   - Add domain to Cloudflare
+   - Configure DNS records
+   - Set up Email Routing (info@gringoconnection.com)
 
 4. **Meta/Facebook**
    - Wait for admin access
@@ -54,6 +51,6 @@
 
 **Browser automation**: Active
 **Services**: Signup pages ready
-**Domain**: Configured in Vercel
-**Next**: Complete signups and connect everything
+**Cloudflare**: Logged in and ready
+**Next**: Connect GitHub repo and deploy to Cloudflare Pages
 
