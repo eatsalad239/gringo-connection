@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "deploy": "wrangler pages deploy .next --project-name=gringo-connection --compatibility-date=2024-01-01"
   },
   "dependencies": {
     "@huggingface/inference": "^2.6.4",
@@ -30,6 +31,7 @@
     "@types/react-dom": "^18.2.18",
     "eslint": "^8.56.0",
     "eslint-config-next": "^14.0.4",
-    "typescript": "^5.3.3"
+    "typescript": "^5.3.3",
+    "wrangler": "^4.45.3"
   }
 }
