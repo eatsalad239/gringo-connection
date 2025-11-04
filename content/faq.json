@@ -1,0 +1,23 @@
+{
+  "faq": [
+    {
+      "question_en": "What services do you offer?",
+      "question_es": "¿Qué servicios ofrecen?",
+      "answer_en": "We provide AI-powered automation solutions including websites, WhatsApp integration, CRM workflows, and bilingual content generation for businesses in Colombia.",
+      "answer_es": "Ofrecemos soluciones de automatización con IA incluyendo sitios web, integración WhatsApp, flujos CRM y generación de contenido bilingüe para empresas en Colombia."
+    },
+    {
+      "question_en": "Do you work with businesses outside Medellín?",
+      "question_es": "¿Trabajan con empresas fuera de Medellín?",
+      "answer_en": "Yes, we serve businesses throughout Colombia. While we're based in Medellín, our solutions are designed for the entire Colombian market.",
+      "answer_es": "Sí, atendemos empresas en toda Colombia. Aunque tenemos base en Medellín, nuestras soluciones están diseñadas para todo el mercado colombiano."
+    },
+    {
+      "question_en": "What is your pricing model?",
+      "question_es": "¿Cuál es su modelo de precios?",
+      "answer_en": "We provide custom pricing after understanding your specific needs and goals. Contact us for a consultation.",
+      "answer_es": "Ofrecemos precios personalizados después de entender sus necesidades y objetivos específicos. Contáctenos para una consulta."
+    }
+  ]
+}
+

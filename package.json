@@ -1,0 +1,39 @@
+{
+  "name": "gringo-ecosystem",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Bilingual EN/ES-CO Next.js website + V0-clone builder CLI + daily posting automation",
+  "scripts": {
+    "dev": "pnpm --filter @app/web dev",
+    "build": "pnpm --filter @app/web build",
+    "lint": "pnpm -r lint",
+    "typecheck": "pnpm -r typecheck",
+    "deploy:cloudflare": "pnpm --filter @builder/cli builder deploy cloudflare",
+    "deploy:netlify": "pnpm --filter @builder/cli builder deploy netlify",
+    "builder": "pnpm --filter @builder/cli builder",
+    "social:generate": "tsx automation/socialEngine.ts",
+    "daily:schedule": "tsx automation/scheduler.ts",
+    "ads:generate": "tsx automation/adGenerator.ts",
+    "tours:run": "tsx automation/tourEngine.ts",
+    "grants:run": "tsx automation/grantRadar.ts",
+    "emails:run": "tsx automation/emailEngine.ts"
+  },
+  "dependencies": {
+    "@huggingface/inference": "^2.6.4",
+    "archiver": "^6.0.1",
+    "date-fns": "^2.30.0",
+    "date-fns-tz": "^2.0.0",
+    "resend": "^2.1.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.0",
+    "@types/archiver": "^6.0.2",
+    "tsx": "^4.7.0",
+    "typescript": "^5.3.3"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "pnpm": ">=8.0.0"
+  }
+}
+

@@ -1,0 +1,32 @@
+{
+  "grants": [
+    {
+      "program": "Digital Transformation Grants",
+      "agency": "MinTIC Colombia",
+      "amount": "Up to 50M COP",
+      "sector": "Technology, SMEs",
+      "region": "Colombia",
+      "deadline": "2024-12-31",
+      "url": "https://www.mintic.gov.co"
+    },
+    {
+      "program": "Innovation Support Program",
+      "agency": "iNNpulsa Colombia",
+      "amount": "Up to 100M COP",
+      "sector": "Startups, Innovation",
+      "region": "Colombia",
+      "deadline": "2024-11-30",
+      "url": "https://www.innpulsacolombia.com"
+    },
+    {
+      "program": "Medellín Tech Fund",
+      "agency": "Ruta N",
+      "amount": "Up to 200M COP",
+      "sector": "Tech Startups, AI",
+      "region": "Medellín",
+      "deadline": "2024-12-15",
+      "url": "https://www.rutanmedellin.org"
+    }
+  ]
+}
+

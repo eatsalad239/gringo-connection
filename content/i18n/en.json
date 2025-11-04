@@ -1,0 +1,26 @@
+{
+  "hero": {
+    "title": "AI that elevates your brand. Built in Medellín.",
+    "subtitle": "Websites, automations, concierge growth — bilingual, enterprise-grade, price after the plan.",
+    "cta": "Get Started",
+    "ctaSecondary": "Learn More"
+  },
+  "nav": {
+    "home": "Home",
+    "services": "Services",
+    "verticals": "Verticals",
+    "tours": "Tours",
+    "partners": "Partners",
+    "contact": "Contact"
+  },
+  "services": {
+    "title": "What We Do",
+    "subtitle": "Enterprise-grade AI solutions for Latin America"
+  },
+  "footer": {
+    "tagline": "AI that elevates your brand. Built in Medellín.",
+    "contact": "Contact",
+    "legal": "Legal"
+  }
+}
+

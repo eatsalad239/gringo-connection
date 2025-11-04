@@ -1,0 +1,8 @@
+name = "gringo-connection"
+compatibility_date = "2024-01-01"
+
+[env.production]
+routes = [
+  { pattern = "gringoconnection.com", zone_name = "gringoconnection.com" }
+]
+

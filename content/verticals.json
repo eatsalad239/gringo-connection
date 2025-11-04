@@ -1,0 +1,85 @@
+{
+  "verticals": [
+    {
+      "id": "law",
+      "name_en": "Legal Services",
+      "name_es": "Servicios Legales",
+      "services": ["law", "ai-website"],
+      "proof_en": [
+        "Reduced client intake time by 60%",
+        "Automated contract review processes",
+        "Bilingual client communication workflows"
+      ],
+      "proof_es": [
+        "Reducción del tiempo de intake de clientes en 60%",
+        "Procesos automatizados de revisión de contratos",
+        "Flujos de comunicación bilingüe con clientes"
+      ]
+    },
+    {
+      "id": "clinics",
+      "name_en": "Healthcare",
+      "name_es": "Salud",
+      "services": ["clinics", "ai-website"],
+      "proof_en": [
+        "Streamlined patient scheduling",
+        "HIPAA-compliant messaging systems",
+        "Automated appointment reminders"
+      ],
+      "proof_es": [
+        "Agendamiento de pacientes optimizado",
+        "Sistemas de mensajería compatibles con HIPAA",
+        "Recordatorios de citas automatizados"
+      ]
+    },
+    {
+      "id": "restaurants",
+      "name_en": "Restaurant & Hospitality",
+      "name_es": "Restaurantes y Hospitalidad",
+      "services": ["restaurants", "ai-website"],
+      "proof_en": [
+        "WhatsApp ordering integration",
+        "Reservation management automation",
+        "Loyalty program workflows"
+      ],
+      "proof_es": [
+        "Integración de pedidos por WhatsApp",
+        "Automatización de gestión de reservas",
+        "Flujos de programas de fidelidad"
+      ]
+    },
+    {
+      "id": "education",
+      "name_en": "Education & EdTech",
+      "name_es": "Educación y EdTech",
+      "services": ["education", "ai-website"],
+      "proof_en": [
+        "Student enrollment automation",
+        "Bilingual LMS integration",
+        "AI tutoring assistants"
+      ],
+      "proof_es": [
+        "Automatización de inscripción de estudiantes",
+        "Integración LMS bilingüe",
+        "Asistentes de tutoría con IA"
+      ]
+    },
+    {
+      "id": "startups",
+      "name_en": "Startups & Agencies",
+      "name_es": "Startups y Agencias",
+      "services": ["startups", "ai-website"],
+      "proof_en": [
+        "MVP development acceleration",
+        "Automated marketing workflows",
+        "Lead generation systems"
+      ],
+      "proof_es": [
+        "Aceleración del desarrollo de MVP",
+        "Flujos de marketing automatizados",
+        "Sistemas de generación de leads"
+      ]
+    }
+  ]
+}
+

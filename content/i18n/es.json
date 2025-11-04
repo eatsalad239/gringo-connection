@@ -1,0 +1,26 @@
+{
+  "hero": {
+    "title": "IA que eleva su marca. Hecha en Medellín.",
+    "subtitle": "Sitios web, automatizaciones y crecimiento concierge — bilingüe, nivel empresa, precio después del plan.",
+    "cta": "Comenzar",
+    "ctaSecondary": "Saber Más"
+  },
+  "nav": {
+    "home": "Inicio",
+    "services": "Servicios",
+    "verticals": "Verticales",
+    "tours": "Tours",
+    "partners": "Socios",
+    "contact": "Contacto"
+  },
+  "services": {
+    "title": "Lo Que Hacemos",
+    "subtitle": "Soluciones de IA nivel empresa para América Latina"
+  },
+  "footer": {
+    "tagline": "IA que eleva su marca. Hecha en Medellín.",
+    "contact": "Contacto",
+    "legal": "Legal"
+  }
+}
+

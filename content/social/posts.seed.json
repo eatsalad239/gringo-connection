@@ -1,0 +1,203 @@
+[
+  {
+    "type": "authority",
+    "vertical": "law",
+    "language": "en",
+    "caption_en": "Legal practices in Colombia are automating client intake with AI. Reduce manual work by 60% while improving response times. Built in Medellín.",
+    "caption_es": "Las firmas legales en Colombia están automatizando el intake de clientes con IA. Reduce el trabajo manual en 60% mientras mejoras los tiempos de respuesta. Hecho en Medellín.",
+    "hashtags": ["#LegalTech", "#Colombia", "#Medellín", "#AI", "#Automation"],
+    "media_prompt": "Modern law office in Medellín with AI technology integration, professional atmosphere",
+    "verified": false
+  },
+  {
+    "type": "authority",
+    "vertical": "clinics",
+    "language": "es",
+    "caption_en": "Medical clinics are streamlining patient scheduling with bilingual WhatsApp automation. HIPAA-compliant, enterprise-grade solutions.",
+    "caption_es": "Las clínicas médicas están optimizando el agendamiento de pacientes con automatización bilingüe por WhatsApp. Soluciones compatibles con HIPAA, nivel empresa.",
+    "hashtags": ["#HealthTech", "#Colombia", "#Medellín", "#IA", "#Automatización"],
+    "media_prompt": "Modern medical clinic waiting area with digital screens showing appointment schedules",
+    "verified": false
+  },
+  {
+    "type": "lifestyle",
+    "vertical": "restaurants",
+    "language": "es",
+    "caption_en": "Order your favorite dishes via WhatsApp. No apps, no downloads — just text and enjoy. Built for Medellín restaurants.",
+    "caption_es": "Pide tus platos favoritos por WhatsApp. Sin apps, sin descargas — solo escribe y disfruta. Hecho para restaurantes de Medellín.",
+    "hashtags": ["#RestaurantTech", "#Medellín", "#WhatsApp", "#IA"],
+    "media_prompt": "Delicious Colombian food plated beautifully, restaurant ambiance, WhatsApp chat interface overlay",
+    "verified": false
+  },
+  {
+    "type": "testimonial",
+    "vertical": "startups",
+    "language": "en",
+    "caption_en": "\"Gringo Connection helped us launch our MVP in half the time. Their AI-powered workflows are game-changers.\" — Startup Founder, Medellín",
+    "caption_es": "\"Gringo Connection nos ayudó a lanzar nuestro MVP en la mitad del tiempo. Sus flujos de trabajo con IA son revolucionarios.\" — Fundador de Startup, Medellín",
+    "hashtags": ["#Startup", "#MVP", "#Medellín", "#AI"],
+    "media_prompt": "Happy entrepreneur in modern coworking space in Medellín, laptop showing AI dashboard",
+    "verified": false
+  },
+  {
+    "type": "event",
+    "vertical": "tours",
+    "language": "es",
+    "caption_en": "Join us for AI Coffee Tour this Friday. Visit Medellín's top tech startups, meet founders, discuss automation opportunities. Limited capacity.",
+    "caption_es": "Únete a nuestro Tour de Café con IA este viernes. Visita las mejores startups tecnológicas de Medellín, conoce fundadores, discute oportunidades de automatización. Capacidad limitada.",
+    "hashtags": ["#AICoffeeTour", "#Medellín", "#Networking", "#Startups"],
+    "media_prompt": "Coffee cups on table with laptops and tech equipment in background, Medellín skyline visible",
+    "verified": false
+  },
+  {
+    "type": "authority",
+    "vertical": "education",
+    "language": "es",
+    "caption_en": "Educational institutions are automating student enrollment with bilingual AI systems. Reduce administrative overhead by 40%.",
+    "caption_es": "Las instituciones educativas están automatizando la inscripción de estudiantes con sistemas de IA bilingües. Reduce la carga administrativa en 40%.",
+    "hashtags": ["#EdTech", "#Colombia", "#IA", "#Educación"],
+    "media_prompt": "Modern classroom with students using tablets, digital whiteboard showing enrollment dashboard",
+    "verified": false
+  },
+  {
+    "type": "offer",
+    "vertical": "real-estate",
+    "language": "en",
+    "caption_en": "Real estate agencies: Automate lead qualification and follow-up. Book virtual tours instantly via WhatsApp. Bilingual client communication.",
+    "caption_es": "Agencias inmobiliarias: Automatiza la calificación de leads y seguimiento. Agenda tours virtuales al instante por WhatsApp. Comunicación bilingüe con clientes.",
+    "hashtags": ["#RealEstate", "#Automation", "#WhatsApp", "#Medellín"],
+    "media_prompt": "Modern apartment interior with virtual tour interface on tablet, Medellín cityscape in window",
+    "verified": false
+  },
+  {
+    "type": "lifestyle",
+    "vertical": "startups",
+    "language": "en",
+    "caption_en": "From idea to MVP in weeks, not months. AI-powered development workflows built for speed. Made in Medellín.",
+    "caption_es": "De idea a MVP en semanas, no meses. Flujos de desarrollo con IA construidos para velocidad. Hecho en Medellín.",
+    "hashtags": ["#MVP", "#Startup", "#Medellín", "#AI"],
+    "media_prompt": "Developer coding on laptop in modern Medellín coworking space, AI code suggestions visible on screen",
+    "verified": false
+  },
+  {
+    "type": "testimonial",
+    "vertical": "clinics",
+    "language": "es",
+    "caption_en": "\"Patient scheduling is now effortless. Our staff focuses on care, not paperwork. The bilingual system works perfectly.\" — Clinic Director",
+    "caption_es": "\"El agendamiento de pacientes ahora es sin esfuerzo. Nuestro personal se enfoca en el cuidado, no en papeleo. El sistema bilingüe funciona perfectamente.\" — Directora de Clínica",
+    "hashtags": ["#HealthTech", "#Colombia", "#Automatización"],
+    "media_prompt": "Healthcare professional smiling, modern clinic background, digital scheduling interface visible",
+    "verified": false
+  },
+  {
+    "type": "event",
+    "vertical": "tours",
+    "language": "en",
+    "caption_en": "Cocktail & Code: Evening networking event combining drinks with AI demos. Perfect for entrepreneurs exploring automation solutions. This Thursday, 7 PM.",
+    "caption_es": "Cóctel y Código: Evento de networking nocturno que combina bebidas con demos de IA. Perfecto para emprendedores que exploran soluciones de automatización. Este jueves, 7 PM.",
+    "hashtags": ["#CocktailAndCode", "#Networking", "#Medellín", "#AI"],
+    "media_prompt": "Evening event with cocktails and laptops, modern Medellín bar setting, tech demos on screens",
+    "verified": false
+  },
+  {
+    "type": "authority",
+    "vertical": "accounting",
+    "language": "es",
+    "caption_en": "Accounting firms automate invoice generation and payment reminders. Client portals with bilingual support. Built for Colombian businesses.",
+    "caption_es": "Las firmas contables automatizan la generación de facturas y recordatorios de pago. Portales de clientes con soporte bilingüe. Hecho para empresas colombianas.",
+    "hashtags": ["#Accounting", "#Automation", "#Colombia", "#IA"],
+    "media_prompt": "Professional accountant at desk with digital invoice interface, modern office setting",
+    "verified": false
+  },
+  {
+    "type": "lifestyle",
+    "vertical": "restaurants",
+    "language": "es",
+    "caption_en": "WhatsApp ordering is changing how Medellín restaurants serve customers. No apps needed — just text and order. Built for local businesses.",
+    "caption_es": "Los pedidos por WhatsApp están cambiando cómo los restaurantes de Medellín atienden a sus clientes. Sin apps necesarias — solo escribe y pide. Hecho para negocios locales.",
+    "hashtags": ["#RestaurantTech", "#WhatsApp", "#Medellín", "#LocalBusiness"],
+    "media_prompt": "Chef preparing food, WhatsApp chat interface showing order, restaurant kitchen",
+    "verified": false
+  },
+  {
+    "type": "testimonial",
+    "vertical": "law",
+    "language": "en",
+    "caption_en": "\"Client intake used to take hours. Now it's automated and bilingual. We serve more clients with less admin work.\" — Law Firm Partner",
+    "caption_es": "\"El intake de clientes solía tomar horas. Ahora está automatizado y bilingüe. Atendemos más clientes con menos trabajo administrativo.\" — Socio de Firma Legal",
+    "hashtags": ["#LegalTech", "#Testimonial", "#Colombia"],
+    "media_prompt": "Lawyer in professional office, digital client intake form visible on screen",
+    "verified": false
+  },
+  {
+    "type": "offer",
+    "vertical": "education",
+    "language": "es",
+    "caption_en": "Schools and universities: Automate student enrollment, parent communication, and administrative workflows. Bilingual systems built for Colombian institutions.",
+    "caption_es": "Escuelas y universidades: Automatiza la inscripción de estudiantes, comunicación con padres y flujos administrativos. Sistemas bilingües hechos para instituciones colombianas.",
+    "hashtags": ["#EdTech", "#Colombia", "#Educación", "#Automatización"],
+    "media_prompt": "University campus in Medellín, students walking, digital enrollment kiosk visible",
+    "verified": false
+  },
+  {
+    "type": "authority",
+    "vertical": "startups",
+    "language": "en",
+    "caption_en": "Medellín startups are launching faster with AI-powered development workflows. From concept to market in weeks, not months.",
+    "caption_es": "Las startups de Medellín están lanzando más rápido con flujos de desarrollo potenciados por IA. De concepto a mercado en semanas, no meses.",
+    "hashtags": ["#Startup", "#Medellín", "#AI", "#MVP"],
+    "media_prompt": "Startup team collaborating in modern Medellín office, AI development tools on screens",
+    "verified": false
+  },
+  {
+    "type": "lifestyle",
+    "vertical": "clinics",
+    "language": "es",
+    "caption_en": "Patient care, not paperwork. Medical clinics automate scheduling and reminders so staff can focus on what matters most.",
+    "caption_es": "Atención al paciente, no papeleo. Las clínicas médicas automatizan el agendamiento y recordatorios para que el personal se enfoque en lo que más importa.",
+    "hashtags": ["#HealthTech", "#Colombia", "#Automatización"],
+    "media_prompt": "Healthcare worker with patient, modern clinic setting, digital scheduling system in background",
+    "verified": false
+  },
+  {
+    "type": "event",
+    "vertical": "tours",
+    "language": "en",
+    "caption_en": "AI Coffee Tour: Experience Medellín's tech ecosystem. Visit startups, meet founders, discuss automation. Every Friday morning. Book now.",
+    "caption_es": "Tour de Café con IA: Experimenta el ecosistema tecnológico de Medellín. Visita startups, conoce fundadores, discute automatización. Todos los viernes por la mañana. Reserva ahora.",
+    "hashtags": ["#AICoffeeTour", "#Medellín", "#TechEcosystem", "#Networking"],
+    "media_prompt": "Coffee meeting with entrepreneurs, Medellín tech district visible through window",
+    "verified": false
+  },
+  {
+    "type": "testimonial",
+    "vertical": "restaurants",
+    "language": "es",
+    "caption_en": "\"WhatsApp ordering increased our sales by 30%. Customers love the simplicity. No apps, just text.\" — Restaurant Owner, Medellín",
+    "caption_es": "\"Los pedidos por WhatsApp aumentaron nuestras ventas en 30%. A los clientes les encanta la simplicidad. Sin apps, solo texto.\" — Dueño de Restaurante, Medellín",
+    "hashtags": ["#RestaurantTech", "#Testimonial", "#Medellín"],
+    "media_prompt": "Restaurant owner smiling, WhatsApp order notifications on phone, busy restaurant background",
+    "verified": false
+  },
+  {
+    "type": "authority",
+    "vertical": "real-estate",
+    "language": "en",
+    "caption_en": "Real estate automation: Qualify leads instantly, schedule virtual tours automatically, communicate in English and Spanish. Built for Colombian agencies.",
+    "caption_es": "Automatización inmobiliaria: Califica leads al instante, agenda tours virtuales automáticamente, comunícate en inglés y español. Hecho para agencias colombianas.",
+    "hashtags": ["#RealEstate", "#Automation", "#Colombia", "#IA"],
+    "media_prompt": "Modern apartment listing with virtual tour interface, Medellín cityscape, real estate agent with tablet",
+    "verified": false
+  },
+  {
+    "type": "offer",
+    "vertical": "accounting",
+    "language": "es",
+    "caption_en": "Accounting automation: Generate invoices automatically, send payment reminders, manage client portals. Bilingual support for Colombian businesses.",
+    "caption_es": "Automatización contable: Genera facturas automáticamente, envía recordatorios de pago, gestiona portales de clientes. Soporte bilingüe para empresas colombianas.",
+    "hashtags": ["#Accounting", "#Automation", "#Colombia", "#IA"],
+    "media_prompt": "Professional accountant working with digital invoicing system, modern office",
+    "verified": false
+  }
+]
+

@@ -1,0 +1,141 @@
+{
+  "services": [
+    {
+      "id": "law",
+      "name_en": "Legal Practice Automation",
+      "name_es": "Automatización para Firmas Legales",
+      "capabilities_en": [
+        "AI-powered document analysis and contract review",
+        "Client intake automation with WhatsApp integration",
+        "Case management dashboards and workflow optimization",
+        "Bilingual legal content generation"
+      ],
+      "capabilities_es": [
+        "Análisis de documentos y revisión de contratos con IA",
+        "Automatización de intake de clientes con integración WhatsApp",
+        "Dashboards de gestión de casos y optimización de flujos",
+        "Generación de contenido legal bilingüe"
+      ]
+    },
+    {
+      "id": "clinics",
+      "name_en": "Medical Clinic Systems",
+      "name_es": "Sistemas para Clínicas Médicas",
+      "capabilities_en": [
+        "Patient intake and scheduling automation",
+        "HIPAA-compliant messaging and notifications",
+        "Appointment reminders via WhatsApp and SMS",
+        "Bilingual patient communication workflows"
+      ],
+      "capabilities_es": [
+        "Automatización de intake y agendamiento de pacientes",
+        "Mensajería y notificaciones compatibles con HIPAA",
+        "Recordatorios de citas por WhatsApp y SMS",
+        "Flujos de comunicación bilingüe con pacientes"
+      ]
+    },
+    {
+      "id": "ai-website",
+      "name_en": "AI Website + WhatsApp Integration",
+      "name_es": "Sitio Web IA + Integración WhatsApp",
+      "capabilities_en": [
+        "Next.js websites with bilingual support",
+        "AI-powered chat widgets and lead capture",
+        "WhatsApp Business API integration",
+        "Automated lead routing and CRM sync"
+      ],
+      "capabilities_es": [
+        "Sitios web Next.js con soporte bilingüe",
+        "Widgets de chat con IA y captura de leads",
+        "Integración con WhatsApp Business API",
+        "Enrutamiento automático de leads y sincronización CRM"
+      ]
+    },
+    {
+      "id": "restaurants",
+      "name_en": "Restaurant & Hospitality Automation",
+      "name_es": "Automatización para Restaurantes y Hospitalidad",
+      "capabilities_en": [
+        "Online ordering and reservation systems",
+        "WhatsApp menu browsing and order placement",
+        "Loyalty program automation",
+        "Bilingual customer service chatbots"
+      ],
+      "capabilities_es": [
+        "Sistemas de pedidos en línea y reservas",
+        "Navegación de menú y pedidos por WhatsApp",
+        "Automatización de programas de fidelidad",
+        "Chatbots de atención al cliente bilingües"
+      ]
+    },
+    {
+      "id": "education",
+      "name_en": "Education & EdTech Solutions",
+      "name_es": "Soluciones para Educación y EdTech",
+      "capabilities_en": [
+        "Student enrollment and registration automation",
+        "Bilingual learning management systems",
+        "AI tutoring assistants and content generation",
+        "Parent-teacher communication workflows"
+      ],
+      "capabilities_es": [
+        "Automatización de inscripción y registro de estudiantes",
+        "Sistemas de gestión de aprendizaje bilingües",
+        "Asistentes de tutoría con IA y generación de contenido",
+        "Flujos de comunicación padres-maestros"
+      ]
+    },
+    {
+      "id": "startups",
+      "name_en": "Startup & Agency Growth",
+      "name_es": "Crecimiento para Startups y Agencias",
+      "capabilities_en": [
+        "MVP development with AI-enhanced features",
+        "Automated marketing campaign workflows",
+        "Lead generation and nurturing automation",
+        "Bilingual content and social media management"
+      ],
+      "capabilities_es": [
+        "Desarrollo de MVP con funciones mejoradas por IA",
+        "Flujos de trabajo para campañas de marketing automatizadas",
+        "Automatización de generación y nutrición de leads",
+        "Gestión de contenido bilingüe y redes sociales"
+      ]
+    },
+    {
+      "id": "real-estate",
+      "name_en": "Real Estate Automation",
+      "name_es": "Automatización Inmobiliaria",
+      "capabilities_en": [
+        "Property listing management and syndication",
+        "Lead qualification and follow-up automation",
+        "Virtual tour scheduling and notifications",
+        "Bilingual client communication systems"
+      ],
+      "capabilities_es": [
+        "Gestión y sindicación de listados de propiedades",
+        "Automatización de calificación y seguimiento de leads",
+        "Agendamiento de tours virtuales y notificaciones",
+        "Sistemas de comunicación bilingüe con clientes"
+      ]
+    },
+    {
+      "id": "accounting",
+      "name_en": "Accounting & Finance Automation",
+      "name_es": "Automatización Contable y Financiera",
+      "capabilities_en": [
+        "Invoice generation and payment reminders",
+        "Expense tracking and categorization automation",
+        "Client portal with bilingual support",
+        "Tax document collection workflows"
+      ],
+      "capabilities_es": [
+        "Generación de facturas y recordatorios de pago",
+        "Automatización de seguimiento y categorización de gastos",
+        "Portal de clientes con soporte bilingüe",
+        "Flujos de recolección de documentos fiscales"
+      ]
+    }
+  ]
+}
+

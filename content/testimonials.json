@@ -1,0 +1,23 @@
+{
+  "testimonials": [
+    {
+      "name": "María González",
+      "role_en": "Clinic Director",
+      "role_es": "Directora de Clínica",
+      "company": "Clínica Salud Total",
+      "quote_en": "Patient scheduling is now effortless. Our staff focuses on care, not paperwork.",
+      "quote_es": "El agendamiento de pacientes ahora es sin esfuerzo. Nuestro personal se enfoca en el cuidado, no en papeleo.",
+      "vertical": "clinics"
+    },
+    {
+      "name": "Carlos Rodríguez",
+      "role_en": "Law Firm Partner",
+      "role_es": "Socio de Firma Legal",
+      "company": "Rodríguez & Asociados",
+      "quote_en": "Client intake used to take hours. Now it's automated and bilingual.",
+      "quote_es": "El intake de clientes solía tomar horas. Ahora está automatizado y bilingüe.",
+      "vertical": "law"
+    }
+  ]
+}
+

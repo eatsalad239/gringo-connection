@@ -1,0 +1,47 @@
+{
+  "tours": [
+    {
+      "id": "ai-coffee",
+      "name": "AI Coffee Tour",
+      "name_en": "AI Coffee Tour",
+      "name_es": "Tour de Café con IA",
+      "description_en": "Experience Medellín's tech scene over coffee. Visit AI startups, meet founders, and discuss automation opportunities.",
+      "description_es": "Experimenta la escena tecnológica de Medellín tomando café. Visita startups de IA, conoce fundadores y discute oportunidades de automatización.",
+      "capacity": 8,
+      "duration": "3 hours",
+      "price": 150000,
+      "currency": "COP",
+      "dates": [],
+      "blackoutDates": [],
+      "upsells": [
+        {
+          "name": "Extended Networking Session",
+          "name_es": "Sesión Extendida de Networking",
+          "price": 50000
+        }
+      ]
+    },
+    {
+      "id": "cocktail-code",
+      "name": "Cocktail & Code",
+      "name_en": "Cocktail & Code",
+      "name_es": "Cóctel y Código",
+      "description_en": "Evening networking event combining cocktails with code demos. Perfect for entrepreneurs exploring AI solutions.",
+      "description_es": "Evento de networking nocturno que combina cócteles con demos de código. Perfecto para emprendedores que exploran soluciones de IA.",
+      "capacity": 12,
+      "duration": "2 hours",
+      "price": 120000,
+      "currency": "COP",
+      "dates": [],
+      "blackoutDates": [],
+      "upsells": [
+        {
+          "name": "Premium Cocktail Selection",
+          "name_es": "Selección Premium de Cócteles",
+          "price": 30000
+        }
+      ]
+    }
+  ]
+}
+

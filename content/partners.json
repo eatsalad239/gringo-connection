@@ -1,0 +1,15 @@
+{
+  "partners": [
+    {
+      "id": "gato-blanco",
+      "name": "Gato Blanco",
+      "name_en": "Gato Blanco",
+      "name_es": "Gato Blanco",
+      "description_en": "Partner tours and experiences in Zona Rosa, Medellín",
+      "description_es": "Tours y experiencias asociadas en Zona Rosa, Medellín",
+      "website": "https://gatoblanco.app",
+      "logo": "/partners/gato-blanco.png"
+    }
+  ]
+}
+

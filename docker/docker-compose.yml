@@ -1,0 +1,56 @@
+version: '3.8'
+
+services:
+  # Optional: n8n workflow automation
+  # n8n:
+  #   image: n8nio/n8n
+  #   ports:
+  #     - "5678:5678"
+  #   environment:
+  #     - N8N_BASIC_AUTH_ACTIVE=true
+  #     - N8N_BASIC_AUTH_USER=admin
+  #     - N8N_BASIC_AUTH_PASSWORD=changeme
+  #   volumes:
+  #     - n8n_data:/home/node/.n8n
+
+  # Optional: OpenWebUI for local LLM management
+  # openwebui:
+  #   image: ghcr.io/open-webui/open-webui:main
+  #   ports:
+  #     - "3000:8080"
+  #   volumes:
+  #     - openwebui_data:/app/backend/data
+
+  # Optional: ComfyUI for advanced image generation
+  # comfyui:
+  #   image: comfyui/comfyui:latest
+  #   ports:
+  #     - "8188:8188"
+  #   volumes:
+  #     - comfyui_data:/app/models
+
+  # Optional: Qdrant vector database
+  # qdrant:
+  #   image: qdrant/qdrant:latest
+  #   ports:
+  #     - "6333:6333"
+  #   volumes:
+  #     - qdrant_data:/qdrant/storage
+
+  # Optional: Plausible analytics (self-hosted)
+  # plausible:
+  #   image: plausible/analytics:latest
+  #   ports:
+  #     - "8000:8000"
+  #   environment:
+  #     - BASE_URL=http://localhost:8000
+  #   volumes:
+  #     - plausible_data:/app/data
+
+volumes:
+  # n8n_data:
+  # openwebui_data:
+  # comfyui_data:
+  # qdrant_data:
+  # plausible_data:
+
