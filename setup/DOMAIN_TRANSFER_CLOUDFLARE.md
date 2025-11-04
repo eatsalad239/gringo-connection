@@ -1,8 +1,8 @@
-# 🔄 Moving Domain from Vercel to Cloudflare
+# 🔄 Domain Setup on Cloudflare
 
 ## 🎯 **Goal**
 
-Move `gringoconnection.com` from Vercel to Cloudflare for:
+Set up `gringoconnection.com` on Cloudflare for:
 - ✅ Hosting (Cloudflare Pages)
 - ✅ DNS management
 - ✅ Email routing
@@ -28,12 +28,6 @@ After adding domain, Cloudflare will show:
 **Copy these!**
 
 ### **Step 3: Update Nameservers**
-
-**If domain is registered with Vercel:**
-1. In Vercel: Domain settings → gringoconnection.com
-2. Look for nameserver settings
-3. Update to Cloudflare nameservers
-4. Or transfer domain to Cloudflare completely
 
 **If domain is at registrar (Namecheap, GoDaddy, etc.):**
 1. Login to registrar
@@ -67,10 +61,10 @@ Once DNS propagates:
 
 ## 🎯 **Current Status**
 
-- Domain: On Vercel (needs to move to Cloudflare)
-- Hosting: Will be Cloudflare Pages
+- Domain: gringoconnection.com (needs to be added to Cloudflare)
+- Hosting: Cloudflare Pages
 - Email: Cloudflare Email Routing (info@gringoconnection.com)
-- DNS: Will be Cloudflare
+- DNS: Cloudflare
 
-**Once nameservers are updated, everything moves to Cloudflare!**
+**Once domain is added to Cloudflare, everything is ready!**
 

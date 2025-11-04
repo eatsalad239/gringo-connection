@@ -9,7 +9,7 @@ You're hosting on **Cloudflare Pages** (not Vercel). Here's everything you need:
 ## 📋 **Prerequisites**
 
 1. ✅ Cloudflare account (free)
-2. ✅ Domain: gringoconnection.com (currently on Vercel)
+2. ✅ Domain: gringoconnection.com
 3. ✅ GitHub repo with your code
 4. ✅ API keys in environment variables
 
@@ -34,13 +34,7 @@ You're hosting on **Cloudflare Pages** (not Vercel). Here's everything you need:
 
 ### **3. Update Nameservers**
 
-**Option A: Domain is at Vercel**
-1. In Vercel: Domain settings → Remove domain (or keep, just change nameservers)
-2. Get Cloudflare nameservers (shown after adding domain)
-3. Update nameservers at domain registrar
-4. Wait for propagation (15 min - 48 hours)
-
-**Option B: Domain is at registrar**
+**Domain Setup**
 1. Go to your domain registrar (where you bought it)
 2. Update nameservers to Cloudflare's:
    - `ns1.cloudflare.com`
