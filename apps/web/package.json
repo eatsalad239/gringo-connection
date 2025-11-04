@@ -8,7 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "typecheck": "tsc --noEmit",
-    "deploy": "wrangler pages deploy .next --project-name=gringo-connection --compatibility-date=2024-01-01"
+    "deploy": "wrangler pages deploy .next --project-name=gringo-connection"
   },
   "dependencies": {
     "@huggingface/inference": "^2.6.4",
