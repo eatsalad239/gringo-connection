@@ -660,11 +660,27 @@ export class D1Database {
 }
 
 // Export a factory function that uses Cloudflare D1 or fallback
-export function getDatabase(env?: { DB?: D1Database }): D1Database | any {
-  if (env?.DB) {
-    return new D1Database(env.DB);
+export function getDatabase(env?: { DB?: any }): any {
+  // In Cloudflare Pages/Workers, DB is bound via wrangler.toml
+  // For Next.js API routes, we need to access it via request context
+  // Fallback to in-memory for development
+  if (typeof process !== 'undefined' && process.env.NODE_ENV === 'development') {
+    // Use in-memory database in development
+    const { db } = require('./index');
+    return db;
   }
-  // Fallback to in-memory database for development
-  return require('./index').db;
+  
+  // In production, D1 will be available via Cloudflare Pages Functions
+  // This will be handled by Cloudflare's runtime
+  throw new Error('D1 database not available. Ensure you are running in Cloudflare Pages environment.');
+}
+
+// Helper to get DB from request (for Cloudflare Pages Functions)
+export function getDBFromRequest(request: Request): any {
+  // In Cloudflare Pages, DB is available via env.DB
+  // This is handled by Cloudflare's runtime binding
+  // For now, return in-memory fallback
+  const { db } = require('./index');
+  return db;
 }
 

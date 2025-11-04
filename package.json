@@ -22,7 +22,8 @@
     "media:generate": "tsx automation/mediaGenerator.ts",
     "qa:run": "tsx automation/agents/qaAgent.ts",
     "email:eddy-update": "tsx scripts/email-eddy-update.ts",
-    "email:eddy-summary": "tsx scripts/email-eddy-executive-summary.ts"
+    "email:eddy-summary": "tsx scripts/email-eddy-executive-summary.ts",
+    "agents:qualify-leads": "tsx automation/agents/leadQualificationAgent.ts"
   },
   "dependencies": {
     "@huggingface/inference": "^2.6.4",

@@ -276,6 +276,14 @@ class Database {
     if (filters?.endDate) transactions = transactions.filter(t => t.date <= filters.endDate!);
     return transactions.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
   }
+
+  // Payments helper
+  async listPayments(filters?: { invoiceId?: string; contactId?: string }): Promise<Payment[]> {
+    let payments = Array.from(this.payments.values());
+    if (filters?.invoiceId) payments = payments.filter(p => p.invoiceId === filters.invoiceId);
+    if (filters?.contactId) payments = payments.filter(p => p.contactId === filters.contactId);
+    return payments.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+  }
 }
 
 export const db = new Database();

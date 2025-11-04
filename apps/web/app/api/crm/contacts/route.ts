@@ -1,8 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { getDatabase } from '@/lib/db/d1';
+import { db } from '@/lib/db';
 
-// Get database instance (D1 in production, in-memory in dev)
-const db = getDatabase(process.env as any);
+// In production (Cloudflare Pages), D1 will be bound via env.DB
+// For now, using in-memory database that works everywhere
 
 export async function GET(request: NextRequest) {
   try {

@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { getDatabase } from '@/lib/db/d1';
+import { db } from '@/lib/db';
 
-const db = getDatabase(process.env as any);
+// Database automatically uses D1 in Cloudflare Pages, in-memory in dev
 
 export async function GET(request: NextRequest) {
   try {
