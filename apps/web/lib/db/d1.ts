@@ -17,7 +17,7 @@ import type {
 } from '../db/schema';
 
 export class D1Database {
-  constructor(private db: D1Database) {}
+  constructor(private db: any) {} // Cloudflare D1Database type (not available at build time)
 
   // Contacts
   async createContact(data: Omit<Contact, 'id' | 'createdAt' | 'updatedAt' | 'lifetimeValue' | 'totalDeals' | 'totalRevenue'>): Promise<Contact> {

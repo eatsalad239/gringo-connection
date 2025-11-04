@@ -8,7 +8,7 @@ export function middleware(request: NextRequest) {
   if (pathname.startsWith('/es')) {
     // Add locale to headers so pages can access it
     const response = NextResponse.next();
-    response.headers.set('x-locale', 'es', { append: false });
+    response.headers.set('x-locale', 'es');
     return response;
   }
   

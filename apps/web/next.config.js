@@ -1,10 +1,12 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  // Cloudflare Pages: Use static export for best compatibility
-  output: 'export',
+  // Server mode: Full Next.js features including API routes, SSR, and database queries
+  // Cloudflare Pages supports Next.js server mode via Workers
+  // Remove output: 'export' to enable server-side rendering and API routes
   images: {
-    unoptimized: true, // Required for static export
+    // Images are optimized by default in server mode
+    formats: ['image/avif', 'image/webp'],
   },
   // i18n handled via route segments instead of next.config
   // Performance optimizations

@@ -13,7 +13,20 @@ const inter = Inter({ subsets: ['latin'] });
 export const metadata: Metadata = {
   title: 'Gringo Connection — AI that elevates your brand. Built in Medellín.',
   description: 'Websites, automations, concierge growth — bilingual, enterprise-grade, price after the plan.',
-  keywords: ['AI', 'automation', 'web development', 'Medellín', 'Colombia', 'bilingual', 'enterprise', 'concierge'],
+  keywords: [
+    'AI automation',
+    'web development Medellín',
+    'Colombia tech',
+    'bilingual website',
+    'enterprise software',
+    'concierge growth',
+    'digital transformation',
+    'Medellín Colombia',
+    'AI services',
+    'business automation',
+    'software development Colombia',
+    'tech solutions Medellín',
+  ],
   authors: [{ name: 'Gringo Connection' }],
   creator: 'Gringo Connection',
   publisher: 'Gringo Connection',
@@ -28,6 +41,7 @@ export const metadata: Metadata = {
     languages: {
       'en': '/',
       'es': '/es',
+      'x-default': '/',
     },
   },
   openGraph: {
@@ -45,7 +59,7 @@ export const metadata: Metadata = {
     ],
     locale: 'en_US',
     type: 'website',
-    alternateLocale: 'es_CO',
+    alternateLocale: ['es_CO'],
   },
   twitter: {
     card: 'summary_large_image',
@@ -68,6 +82,12 @@ export const metadata: Metadata = {
   verification: {
     // Add verification codes when available
   },
+  other: {
+    'geo.region': 'CO-ANT',
+    'geo.placename': 'Medellín',
+    'geo.position': '6.2476;-75.5658',
+    'ICBM': '6.2476, -75.5658',
+  },
 };
 
 export default function RootLayout({
@@ -83,22 +103,77 @@ export default function RootLayout({
   const plausibleDomain = process.env.NEXT_PUBLIC_PLAUSIBLE_DOMAIN || process.env.PLAUSIBLE_DOMAIN;
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://gringoconnection.com';
 
-  // Structured data (JSON-LD) for SEO
+  // Enhanced Structured data (JSON-LD) for SEO
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'Organization',
     name: 'Gringo Connection',
     url: baseUrl,
+    logo: `${baseUrl}/logo.png`,
     description: 'AI that elevates your brand. Built in Medellín.',
     address: {
       '@type': 'PostalAddress',
       addressLocality: 'Medellín',
       addressRegion: 'Antioquia',
+      postalCode: '050001',
       addressCountry: 'CO',
+    },
+    areaServed: {
+      '@type': 'Country',
+      name: 'Colombia',
+    },
+    knowsAbout: [
+      'Artificial Intelligence',
+      'Web Development',
+      'Business Automation',
+      'Digital Marketing',
+      'Concierge Services',
+    ],
+    foundingLocation: {
+      '@type': 'Place',
+      address: {
+        '@type': 'PostalAddress',
+        addressLocality: 'Medellín',
+        addressRegion: 'Antioquia',
+        addressCountry: 'CO',
+      },
     },
     sameAs: [
       // Add social media links when available
     ],
+  };
+
+  // LocalBusiness schema for GEO targeting
+  const localBusinessJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'LocalBusiness',
+    '@id': `${baseUrl}#organization`,
+    name: 'Gringo Connection',
+    image: `${baseUrl}/logo.png`,
+    url: baseUrl,
+    telephone: '+57-300-000-0000',
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: 'Zona Rosa, Medellín',
+      addressLocality: 'Medellín',
+      addressRegion: 'Antioquia',
+      postalCode: '050001',
+      addressCountry: 'CO',
+    },
+    geo: {
+      '@type': 'GeoCoordinates',
+      latitude: 6.2476,
+      longitude: -75.5658,
+    },
+    openingHoursSpecification: {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+      opens: '09:00',
+      closes: '18:00',
+      timeZone: 'America/Bogota',
+    },
+    priceRange: '$$',
+    servesCuisine: 'Technology Services',
   };
 
   return (
@@ -111,9 +186,21 @@ export default function RootLayout({
         <link rel="manifest" href="/site.webmanifest" />
         <meta name="theme-color" content="#2563eb" />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+        <meta name="geo.region" content="CO-ANT" />
+        <meta name="geo.placename" content="Medellín" />
+        <meta name="geo.position" content="6.2476;-75.5658" />
+        <meta name="ICBM" content="6.2476, -75.5658" />
+        <link rel="alternate" hrefLang="en" href={`${baseUrl}/`} />
+        <link rel="alternate" hrefLang="es" href={`${baseUrl}/es`} />
+        <link rel="alternate" hrefLang="es-CO" href={`${baseUrl}/es`} />
+        <link rel="alternate" hrefLang="x-default" href={`${baseUrl}/`} />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessJsonLd) }}
         />
         {plausibleDomain && (
           <Script
@@ -133,4 +220,3 @@ export default function RootLayout({
     </html>
   );
 }
-
