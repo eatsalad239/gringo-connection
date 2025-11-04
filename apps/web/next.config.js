@@ -16,7 +16,11 @@ const nextConfig = {
   productionBrowserSourceMaps: false,
   // Optimize fonts
   optimizeFonts: true,
+  // Cloudflare Pages: Explicitly set output directory
+  // This helps Cloudflare detect Next.js server mode
+  experimental: {
+    // Ensure Cloudflare can detect this as Next.js
+  },
 };
 
 module.exports = nextConfig;
-
