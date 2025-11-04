@@ -1,0 +1,92 @@
+[
+  {
+    "businessType": "restaurants",
+    "website": "file:///workspace/test-contact-form.html",
+    "formFound": false,
+    "formFilled": false,
+    "emailSent": false,
+    "timestamp": "2025-11-04T17:20:25.824Z",
+    "error": "TypeError: page.setJavaScriptEnabled is not a function"
+  },
+  {
+    "businessType": "restaurants",
+    "website": "file:///workspace/test-contact-form.html",
+    "formFound": false,
+    "formFilled": false,
+    "emailSent": false,
+    "timestamp": "2025-11-04T17:20:25.824Z",
+    "error": "TypeError: page.setJavaScriptEnabled is not a function"
+  },
+  {
+    "businessType": "restaurants",
+    "website": "file:///workspace/test-contact-form.html",
+    "formFound": false,
+    "formFilled": false,
+    "emailSent": false,
+    "timestamp": "2025-11-04T17:20:25.823Z",
+    "error": "TypeError: page.setJavaScriptEnabled is not a function"
+  },
+  {
+    "businessType": "restaurants",
+    "website": "https://www.tripadvisor.com/Restaurant_Review-g297444-d1042506-Reviews-Hacienda_Santa_Marta-Medellin_Antioquia_Department.html",
+    "formFound": false,
+    "formFilled": false,
+    "emailSent": false,
+    "timestamp": "2025-11-04T17:20:25.825Z",
+    "error": "TypeError: page.setJavaScriptEnabled is not a function"
+  },
+  {
+    "businessType": "restaurants",
+    "website": "https://www.opentable.com/r/hacienda-santa-marta-medellin",
+    "formFound": false,
+    "formFilled": false,
+    "emailSent": false,
+    "timestamp": "2025-11-04T17:20:25.825Z",
+    "error": "TypeError: page.setJavaScriptEnabled is not a function"
+  },
+  {
+    "businessType": "restaurants",
+    "website": "https://www.opentable.com/r/hacienda-santa-marta-medellin",
+    "formFound": false,
+    "formFilled": false,
+    "emailSent": false,
+    "timestamp": "2025-11-04T17:20:25.824Z",
+    "error": "TypeError: page.setJavaScriptEnabled is not a function"
+  },
+  {
+    "businessType": "restaurants",
+    "website": "https://www.tripadvisor.com/Restaurant_Review-g297444-d1042506-Reviews-Hacienda_Santa_Marta-Medellin_Antioquia_Department.html",
+    "formFound": false,
+    "formFilled": false,
+    "emailSent": false,
+    "timestamp": "2025-11-04T17:20:25.824Z",
+    "error": "TypeError: page.setJavaScriptEnabled is not a function"
+  },
+  {
+    "businessType": "restaurants",
+    "website": "file:///workspace/test-contact-form.html",
+    "formFound": false,
+    "formFilled": false,
+    "emailSent": false,
+    "timestamp": "2025-11-04T17:20:25.825Z",
+    "error": "TypeError: page.setJavaScriptEnabled is not a function"
+  },
+  {
+    "businessType": "restaurants",
+    "website": "file:///workspace/test-contact-form.html",
+    "formFound": false,
+    "formFilled": false,
+    "emailSent": false,
+    "timestamp": "2025-11-04T17:20:25.824Z",
+    "error": "TypeError: page.setJavaScriptEnabled is not a function"
+  },
+  {
+    "businessType": "restaurants",
+    "website": "file:///workspace/test-contact-form.html",
+    "formFound": false,
+    "formFilled": false,
+    "emailSent": false,
+    "timestamp": "2025-11-04T17:20:25.825Z",
+    "error": "TypeError: page.setJavaScriptEnabled is not a function"
+  }
+]

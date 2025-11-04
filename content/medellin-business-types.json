@@ -3,82 +3,82 @@
     {
       "id": "restaurants",
       "name": "Restaurants & Hospitality",
-      "searchTerms": ["restaurante medellín", "hotel medellín", "hospedaje medellín", "bar medellín"],
+      "searchTerms": ["restaurante medellín", "hotel medellín", "hospedaje medellín", "bar medellín", "cafetería medellín", "panadería medellín"],
       "painPoints": ["Online reservations not working", "No Google reviews integration", "Outdated menu online", "No delivery ordering system"],
       "valueProp": "Increase reservations by 40% with automated booking system and bilingual website",
-      "contactForms": ["contact", "reservations", "booking", "consulta"]
+      "contactForms": ["contact", "reservations", "booking", "consulta", "reservar"]
     },
     {
       "id": "real-estate",
       "name": "Real Estate",
-      "searchTerms": ["inmobiliaria medellín", "venta apartamentos medellín", "arriendo medellín", "real estate medellín"],
+      "searchTerms": ["inmobiliaria medellín", "venta apartamentos medellín", "arriendo medellín", "real estate medellín", "apartamentos medellín", "casas medellín"],
       "painPoints": ["Properties not showing on Google", "No virtual tours", "Manual lead tracking", "Poor mobile experience"],
       "valueProp": "Sell properties 60% faster with AI-powered listing optimization and virtual tours",
-      "contactForms": ["contact", "consulta", "inquiry", "contacto"]
+      "contactForms": ["contact", "consulta", "inquiry", "contacto", "cotizar"]
     },
     {
       "id": "healthcare",
       "name": "Healthcare & Clinics",
-      "searchTerms": ["clínica medellín", "odontología medellín", "médico medellín", "hospital medellín"],
+      "searchTerms": ["clínica medellín", "odontología medellín", "médico medellín", "hospital medellín", "odontólogo medellín", "psicólogo medellín"],
       "painPoints": ["Patients can't book online", "No appointment reminders", "Paper records still used", "Poor online reputation"],
       "valueProp": "Reduce no-shows by 50% with automated scheduling and patient communication",
-      "contactForms": ["cita", "appointment", "consulta", "contact"]
+      "contactForms": ["cita", "appointment", "consulta", "contact", "agendar"]
     },
     {
       "id": "legal-services",
       "name": "Legal Services",
-      "searchTerms": ["abogado medellín", "notaría medellín", "asesoría jurídica medellín", "law firm medellín"],
+      "searchTerms": ["abogado medellín", "notaría medellín", "asesoría jurídica medellín", "law firm medellín", "bufete medellín", "jurídico medellín"],
       "painPoints": ["Client intake takes too long", "Manual document review", "No case management system", "Poor client communication"],
       "valueProp": "Handle 3x more clients with automated intake and document processing",
-      "contactForms": ["contact", "consulta", "consulta jurídica", "contacto"]
+      "contactForms": ["contact", "consulta", "consulta jurídica", "contacto", "asesoría"]
     },
     {
       "id": "tourism",
       "name": "Tourism & Travel",
-      "searchTerms": ["turismo medellín", "agencia viajes medellín", "guía turístico medellín", "excursiones medellín"],
+      "searchTerms": ["turismo medellín", "agencia viajes medellín", "guía turístico medellín", "excursiones medellín", "tours medellín", "viajes medellín"],
       "painPoints": ["Bookings not automated", "No online payment", "Poor review management", "Outdated tour information"],
       "valueProp": "Increase bookings by 80% with automated tour reservations and payment processing",
-      "contactForms": ["reserva", "booking", "contact", "consulta"]
+      "contactForms": ["reserva", "booking", "contact", "consulta", "reservar"]
     },
     {
       "id": "education",
       "name": "Education & Training",
-      "searchTerms": ["universidad medellín", "colegio medellín", "academia medellín", "cursos medellín"],
+      "searchTerms": ["universidad medellín", "colegio medellín", "academia medellín", "cursos medellín", "capacitación medellín", "educación medellín"],
       "painPoints": ["Manual enrollment process", "No online learning platform", "Poor student communication", "Outdated course catalog"],
       "valueProp": "Streamline enrollment and improve student engagement with modern LMS integration",
-      "contactForms": ["inscripción", "matrícula", "contact", "admission"]
+      "contactForms": ["inscripción", "matrícula", "contact", "admission", "registro"]
     },
     {
       "id": "construction",
       "name": "Construction & Architecture",
-      "searchTerms": ["construcción medellín", "arquitecto medellín", "constructor medellín", "obra civil medellín"],
+      "searchTerms": ["construcción medellín", "arquitecto medellín", "constructor medellín", "obra civil medellín", "arquitectura medellín", "edificación medellín"],
       "painPoints": ["Project management chaos", "No client portals", "Manual quote process", "Poor project visibility"],
       "valueProp": "Complete projects 30% faster with automated project management and client portals",
-      "contactForms": ["cotización", "quote", "contact", "consulta"]
+      "contactForms": ["cotización", "quote", "contact", "consulta", "presupuesto"]
     },
     {
       "id": "retail",
       "name": "Retail & E-commerce",
-      "searchTerms": ["tienda medellín", "comercio medellín", "venta online medellín", "ecommerce medellín"],
+      "searchTerms": ["tienda medellín", "comercio medellín", "venta online medellín", "ecommerce medellín", "boutique medellín", "local comercial medellín"],
       "painPoints": ["No online store", "Inventory management manual", "Poor mobile shopping experience", "No automated marketing"],
       "valueProp": "Increase sales by 200% with professional e-commerce platform and automated marketing",
-      "contactForms": ["contact", "consulta", "quote", "contacto"]
+      "contactForms": ["contact", "consulta", "quote", "contacto", "comprar"]
     },
     {
       "id": "professional-services",
       "name": "Professional Services",
-      "searchTerms": ["contador medellín", "asesoría medellín", "consultoría medellín", "servicios profesionales medellín"],
+      "searchTerms": ["contador medellín", "asesoría medellín", "consultoría medellín", "servicios profesionales medellín", "asesor medellín", "consultor medellín"],
       "painPoints": ["Manual client onboarding", "Poor project tracking", "No automated invoicing", "Client communication gaps"],
       "valueProp": "Scale to 5x more clients with automated workflows and client management systems",
-      "contactForms": ["contact", "consulta", "servicios", "contacto"]
+      "contactForms": ["contact", "consulta", "servicios", "contacto", "asesoría"]
     },
     {
       "id": "startups",
       "name": "Startups & Tech",
-      "searchTerms": ["startup medellín", "tecnología medellín", "desarrollo software medellín", "innovación medellín"],
+      "searchTerms": ["startup medellín", "tecnología medellín", "desarrollo software medellín", "innovación medellín", "emprendimiento medellín", "tech medellín"],
       "painPoints": ["No product website", "Manual lead generation", "Poor user experience", "No automated sales funnel"],
       "valueProp": "Accelerate growth with AI-powered website and automated lead conversion systems",
-      "contactForms": ["contact", "demo", "consulta", "contacto"]
+      "contactForms": ["contact", "demo", "consulta", "contacto", "producto"]
     }
   ],
   "medellinStats": {

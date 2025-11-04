@@ -42,7 +42,9 @@
     "swarm:website": "tsx automation/agents/websiteBuilderAgent.ts",
     "swarm:code": "tsx automation/agents/codingAssistantAgent.ts",
     "swarm:advice": "tsx automation/agents/adviceAgent.ts",
-    "swarm:creative": "tsx automation/agents/creativeSwarm.ts"
+    "swarm:creative": "tsx automation/agents/creativeSwarm.ts",
+    "outreach:launch-20-agents": "node --import tsx launch-20-business-outreach-agents.ts",
+    "outreach:test-agent": "node --import tsx launch-20-business-outreach-agents.ts test"
   },
   "dependencies": {
     "@huggingface/inference": "^2.6.4",
