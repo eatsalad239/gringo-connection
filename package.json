@@ -44,7 +44,9 @@
     "swarm:advice": "tsx automation/agents/adviceAgent.ts",
     "swarm:creative": "tsx automation/agents/creativeSwarm.ts",
     "outreach:launch-20-agents": "node --import tsx launch-20-business-outreach-agents.ts",
-    "outreach:test-agent": "node --import tsx launch-20-business-outreach-agents.ts test"
+    "outreach:test-agent": "node --import tsx launch-20-business-outreach-agents.ts test",
+    "scraper:medellin": "node --import tsx medellin_business_scraper.ts scrape",
+    "scraper:test": "node --import tsx medellin_business_scraper.ts test"
   },
   "dependencies": {
     "@huggingface/inference": "^2.6.4",
