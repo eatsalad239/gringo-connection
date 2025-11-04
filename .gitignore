@@ -1,6 +1,7 @@
 node_modules
 dist
 .next
+out
 .env
 .env.local
 *.log
@@ -11,4 +12,13 @@ coverage
 .wrangler
 *.zip
 *.tar.gz
+# Build outputs
+build
+.vercel
+.netlify
+# Credentials (keep example files, ignore actual)
+**/credentials.txt
+**/*credentials*.txt
+!**/CREDENTIALS.md
+!env.example
 
