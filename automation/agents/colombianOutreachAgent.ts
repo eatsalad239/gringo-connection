@@ -1,7 +1,7 @@
 /**
  * Agente de Divulgación Empresarial Colombiana
- * Envía correos electrónicos personalizados a 50K+ negocios colombianos
- * Utiliza Resend para rotar direcciones de correo
+ * Envía correos electrónicos 100% en ESPAÑOL personalizados a 50K+ negocios colombianos
+ * Utiliza Resend para rotar direcciones de correo @gringoconnection.com
  * Segmenta por nivel de ingresos: alto patrimonio → medio → bajo
  * Personaliza el pitch según la industria y puntos débiles
  * Limita velocidad para maximizar entregabilidad
@@ -149,7 +149,7 @@ function generarNegociosColombianosMuestra(cantidad: number): NegocioColombia[] 
 function generarPuntosDolientes(industria: string): string[] {
   const puntosPorIndustria: Record<string, string[]> = {
     'Servicios Legales': ['adquisición de clientes', 'gestión de casos', 'automatización de documentos', 'presencia en línea'],
-    'Médico/Sanitario': ['programación de pacientes', 'telemedicina', 'cumplimiento HIPAA', 'facturación'],
+    'Médico/Sanitario': ['programación de pacientes', 'telemedicina', 'cumplimiento normativo', 'facturación'],
     'Bienes Raíces': ['listados de propiedades', 'generación de leads', 'tours virtuales', 'CRM'],
     'Restaurantes': ['pedidos en línea', 'sistema de reservas', 'gestión de inventario', 'integración de delivery'],
     'Retail': ['sistema POS', 'seguimiento de inventario', 'comercio electrónico', 'lealtad del cliente'],
@@ -163,64 +163,79 @@ function generarPuntosDolientes(industria: string): string[] {
   return puntosPorIndustria[industria] || ['transformación digital', 'automatización', 'presencia en línea'];
 }
 
-// Generar asunto y cuerpo personalizados
+// Generar asunto y cuerpo personalizados - TODO EN ESPAÑOL
 async function generarDivulgacionPersonalizada(
   negocio: NegocioColombia,
   indiceRemitente: number
 ): Promise<{ asunto: string; cuerpoHtml: string; cuerpoTexto: string; serviciosRecomendados: string[] }> {
   const remitente = obtenerProximoRemitente(indiceRemitente);
 
-  // Usar IA para generar pitch personalizado
-  const prompt = `Genera un correo electrónico profesional de divulgación en frío para un negocio colombiano de ${negocio.industria}.
+  // Usar IA para generar pitch completamente personalizado EN ESPAÑOL
+  const prompt = `IMPORTANTE: Responde SOLO en ESPAÑOL. Genera un correo electrónico profesional de divulgación en frío completamente EN ESPAÑOL para un negocio colombiano de ${negocio.industria} ubicado en ${negocio.ubicacion}.
 
 Detalles del Negocio:
 - Nombre: ${negocio.nombre}
 - Ubicación: ${negocio.ubicacion}
 - Tamaño: ~${negocio.empleados} empleados
-- Puntos Débiles: ${negocio.puntosDolientes?.join(', ') || 'Desconocidos'}
+- Puntos Débiles/Desafíos: ${negocio.puntosDolientes?.join(', ') || 'Desconocidos'}
 - Nivel de Ingresos: ${negocio.ingresoEstimado || 'Desconocido'}
 
-Servicios que ofrecemos:
-1. Desarrollo de Sitios Web Personalizados e Integración de IA
-2. Automatización Empresarial y Optimización de Flujos de Trabajo
-3. Migración en la Nube e Infraestructura
-4. Marketing Digital y Generación de Leads
-5. Implementación e Integración de CRM
-6. Análisis de Datos e Inteligencia Empresarial
+Quiénes Somos - Gringo Connection:
+Somos una agencia de tecnología y transformación digital que ayuda a negocios colombianos a crecer rápidamente mediante:
+- Desarrollo de sitios web personalizados con AI integrada
+- Automatización de procesos empresariales
+- Integración de sistemas CRM y gestión de leads
+- Estrategias de marketing digital y generación de leads
+- Migración a la nube e infraestructura
+- Análisis de datos e inteligencia empresarial
 
-Tarea:
-1. Genera una línea de asunto atractiva (máximo 60 caracteres) en ESPAÑOL que mencione un punto débil específico
-2. Escribe un cuerpo de correo profesional en ESPAÑOL de 3-4 párrafos que:
-   - Abre con referencia personalizada a los desafíos de su industria
-   - Menciona 1-2 servicios específicos que resuelven sus puntos débiles
-   - Incluye un CTA suave (ej: "café virtual", "llamada de 15 minutos")
-   - Se cierra profesionalmente
-3. Recomienda 2-3 servicios que mejor se adapten a sus necesidades
+Tarea - Crea un email completamente en ESPAÑOL que:
+1. Genera una línea de asunto atractiva (máximo 60 caracteres) que mencione un punto débil específico del ${negocio.industria}
+2. Escribe un cuerpo de correo profesional de 3-4 párrafos que:
+   - Abre con referencia personalizada a los desafíos de ${negocio.industria} en ${negocio.ubicacion}
+   - Menciona específicamente LO QUE HACEMOS que resuelve esos desafíos
+   - Da ejemplos de resultados que hemos logrado (ej: "30% aumento en leads", "40% reducción de costos operativos")
+   - Incluye un CTA suave al final (ej: "Hagamos una llamada de 15 minutos para explorar cómo podemos ayudarte")
+   - Se cierra con firma profesional
+3. Recomienda 2-3 servicios específicos que mejor se adapten a sus necesidades
 
-Responde SOLO con JSON válido en español:
+Responde SOLO con JSON válido - TODO EL CONTENIDO DEBE ESTAR EN ESPAÑOL:
 {
   "asunto": "...",
   "cuerpo": "...",
-  "serviciosRecomendados": ["servicio1", "servicio2"]
+  "serviciosRecomendados": ["servicio1", "servicio2", "servicio3"]
 }`;
 
   const resultado = await llm.text(prompt, {
-    maxTokens: 800,
+    maxTokens: 1000,
     temperature: 0.7,
-    system: 'Eres un experto en copywriting B2B de ventas. Genera correos de divulgación en frío persuasivos y personalizados EN ESPAÑOL. Responde solo con JSON válido.',
+    system: 'Eres un experto en copywriting B2B en español. Genera correos de divulgación personalizados, profesionales y persuasivos. TODO DEBE ESTAR EN ESPAÑOL. Responde SOLO con JSON válido.',
   });
 
   let contenidoCorreo = {
-    asunto: `Hablemos sobre el crecimiento de ${negocio.industria}`,
-    cuerpo: `Hola ${negocio.nombrePropietario || 'allá'},\n\nAyudamos a negocios de ${negocio.industria} en ${negocio.ubicacion} a optimizar operaciones e impulsar ingresos.\n\n¿Estarías abierto a una rápida llamada de 15 minutos para explorar cómo podríamos ayudar?\n\nMejores saludos,\n${remitente.nombre}`,
-    serviciosRecomendados: ['Desarrollo de Sitio Web Personalizado', 'Automatización Empresarial'],
+    asunto: `Transformación digital para ${negocio.industria} en ${negocio.ubicacion}`,
+    cuerpo: `Hola ${negocio.nombrePropietario || 'allá'},
+
+En Gringo Connection ayudamos a negocios de ${negocio.industria} en ${negocio.ubicacion} a crecer rápidamente mediante automatización y transformación digital.
+
+¿Estarías abierto a una rápida llamada de 15 minutos para explorar cómo podríamos ayudarte?
+
+Mejores saludos,
+${remitente.nombre}
+Gringo Connection`,
+    serviciosRecomendados: ['Desarrollo de Sitio Web Personalizado', 'Automatización Empresarial', 'Sistema de CRM'],
   };
 
   if (resultado.ok && resultado.text) {
     try {
       const jsonMatch = resultado.text.match(/\{[\s\S]*\}/);
       if (jsonMatch) {
-        contenidoCorreo = JSON.parse(jsonMatch[0]);
+        const parsed = JSON.parse(jsonMatch[0]);
+        contenidoCorreo = {
+          asunto: parsed.asunto || contenidoCorreo.asunto,
+          cuerpo: parsed.cuerpo || contenidoCorreo.cuerpo,
+          serviciosRecomendados: parsed.serviciosRecomendados || contenidoCorreo.serviciosRecomendados,
+        };
       }
     } catch (e) {
       console.warn('Error al parsear respuesta de IA:', e);
@@ -230,11 +245,11 @@ Responde SOLO con JSON válido en español:
   // Convertir a HTML
   const cuerpoHtml = `
     <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; color: #333;">
-      <p style="margin: 0 0 15px;">${contenidoCorreo.cuerpo.replace(/\n/g, '<br>')}</p>
+      <p style="margin: 0 0 15px; line-height: 1.6;">${contenidoCorreo.cuerpo.split('\n').join('<br>')}</p>
       
       <div style="background: #f5f5f5; padding: 15px; border-left: 4px solid #0066cc; margin: 20px 0; border-radius: 4px;">
         <p style="margin: 0; font-size: 14px; color: #666;">
-          <strong>¿Interesado?</strong><br>
+          <strong>¿Te gustaría hablar?</strong><br>
           Hagamos una llamada rápida para discutir tus necesidades específicas.
         </p>
       </div>
@@ -324,14 +339,14 @@ function ordenarNegociosPorIngreso(negocios: NegocioColombia[]): NegocioColombia
 
 // Campaña de divulgación principal
 export async function ejecutarDivulgacionColombia(opts?: { maxCorreos?: number }): Promise<void> {
-  const maxCorreos = opts?.maxCorreos || 100; // Comenzar con 100, escalar
+  const maxCorreos = opts?.maxCorreos || 100;
   console.log(`📧 Iniciando campaña de divulgación empresarial colombiana (máx: ${maxCorreos} correos)...`);
 
   const horaInicio = Date.now();
 
   // Cargar negocios
   console.log('📥 Cargando negocios colombianos...');
-  const negocios = await cargarNegociosColombianos(maxCorreos * 2); // Cargar extra para filtrado
+  const negocios = await cargarNegociosColombianos(maxCorreos * 2);
   const negociosOrdenados = ordenarNegociosPorIngreso(negocios);
 
   if (negociosOrdenados.length === 0) {
@@ -383,7 +398,7 @@ export async function ejecutarDivulgacionColombia(opts?: { maxCorreos?: number }
     estadisticas.porNivelIngreso[nivel]++;
 
     // Pequeño retardo entre correos para respetar límites de velocidad
-    await new Promise((resolve) => setTimeout(resolve, 2000 + Math.random() * 3000)); // 2-5 seg retardo
+    await new Promise((resolve) => setTimeout(resolve, 2000 + Math.random() * 3000));
   }
 
   estadisticas.duracionCampana = (Date.now() - horaInicio) / 1000;
