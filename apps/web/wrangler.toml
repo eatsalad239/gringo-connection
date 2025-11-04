@@ -5,6 +5,7 @@ name = "gringo-connection"
 compatibility_date = "2024-01-01"
 
 # Pages build output directory (required for Pages deployments)
+# For Next.js server mode, output is .next (not out)
 pages_build_output_dir = ".next"
 
 # D1 Database (Free SQLite)

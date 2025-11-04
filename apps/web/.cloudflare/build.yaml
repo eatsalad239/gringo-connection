@@ -1,8 +1,0 @@
-# Cloudflare Pages Build Configuration
-# This file overrides dashboard settings
-
-build:
-  command: "pnpm install && pnpm build"
-  output_directory: ".next"
-  root_directory: "apps/web"
-
