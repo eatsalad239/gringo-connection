@@ -330,7 +330,7 @@ export const mail = {
                 Authorization: `Bearer ${process.env.RESEND_API_KEY}`,
               },
               body: JSON.stringify({
-                from: process.env.RESEND_FROM || 'Gringo Connection <info@gringoconnection.com>',
+                from: process.env.RESEND_FROM || 'Gringo Connection <onboarding@resend.dev>',
                 to: Array.isArray(msg.to) ? msg.to : [msg.to],
                 subject: msg.subject,
                 html: msg.html,
@@ -351,9 +351,13 @@ export const mail = {
       if (data.id) {
         return { ok: true, id: data.id };
       }
-      return { ok: false, reason: data.error?.message || 'Unknown error' };
+      const errorMsg = data.error?.message || data.message || JSON.stringify(data);
+      console.error('Resend API error:', errorMsg);
+      return { ok: false, reason: errorMsg || 'Unknown error' };
     } catch (e) {
-      return { ok: false, reason: `Mail send failed: ${e}` };
+      const errorMsg = e instanceof Error ? e.message : String(e);
+      console.error('Mail send exception:', errorMsg);
+      return { ok: false, reason: `Mail send failed: ${errorMsg}` };
     }
   },
 };

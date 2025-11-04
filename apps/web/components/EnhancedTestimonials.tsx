@@ -5,9 +5,11 @@ import { useInView } from 'react-intersection-observer';
 import { Quote, Star } from 'lucide-react';
 
 interface Testimonial {
-  id: string;
+  id?: string;
   name: string;
-  role: string;
+  role?: string;
+  role_en?: string;
+  role_es?: string;
   company: string;
   quote_en: string;
   quote_es: string;
@@ -87,7 +89,7 @@ export function EnhancedTestimonials({
                 <div>
                   <div className="font-semibold text-gray-900">{testimonial.name}</div>
                   <div className="text-sm text-gray-600">
-                    {testimonial.role} at {testimonial.company}
+                    {testimonial.role || (isEs ? testimonial.role_es : testimonial.role_en)} at {testimonial.company}
                   </div>
                 </div>
               </div>

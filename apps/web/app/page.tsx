@@ -51,8 +51,8 @@ export default async function Home({
       <InnovationShowcase locale={locale} />
       <EnhancedServices content={content.services} locale={locale} />
       <InteractiveDemo locale={locale} />
-      <Testimonials content={content.testimonials} locale={locale} />
-      <FAQ content={content.faq} locale={locale} />
+      <EnhancedTestimonials content={content.testimonials} locale={locale} />
+      <EnhancedFAQ content={content.faq} locale={locale} />
     </div>
   );
 }

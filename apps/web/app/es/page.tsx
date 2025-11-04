@@ -1,7 +1,12 @@
-import { Hero } from '@/components/Hero';
-import { Services } from '@/components/Services';
-import { Testimonials } from '@/components/Testimonials';
-import { FAQ } from '@/components/FAQ';
+import { AnimatedHero } from '@/components/AnimatedHero';
+import { EnhancedServices } from '@/components/EnhancedServices';
+import { TechStackShowcase } from '@/components/TechStackShowcase';
+import { InteractiveDemo } from '@/components/InteractiveDemo';
+import { PerformanceMetrics } from '@/components/PerformanceMetrics';
+import { InnovationShowcase } from '@/components/InnovationShowcase';
+import { GrantReadyBadge } from '@/components/GrantReadyBadge';
+import { EnhancedTestimonials } from '@/components/EnhancedTestimonials';
+import { EnhancedFAQ } from '@/components/EnhancedFAQ';
 import { getContent } from '@/lib/content';
 
 export default async function HomeEs() {
@@ -10,10 +15,15 @@ export default async function HomeEs() {
 
   return (
     <div>
-      <Hero content={content.hero} locale={locale} />
-      <Services content={content.services} locale={locale} />
-      <Testimonials content={content.testimonials} locale={locale} />
-      <FAQ content={content.faq} locale={locale} />
+      <AnimatedHero content={content.hero} locale={locale} />
+      <GrantReadyBadge locale={locale} />
+      <TechStackShowcase locale={locale} />
+      <PerformanceMetrics locale={locale} />
+      <InnovationShowcase locale={locale} />
+      <EnhancedServices content={content.services} locale={locale} />
+      <InteractiveDemo locale={locale} />
+      <EnhancedTestimonials content={content.testimonials} locale={locale} />
+      <EnhancedFAQ content={content.faq} locale={locale} />
     </div>
   );
 }

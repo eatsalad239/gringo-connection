@@ -6,7 +6,7 @@ import { useInView } from 'react-intersection-observer';
 import { ChevronDown, HelpCircle } from 'lucide-react';
 
 interface FAQItem {
-  id: string;
+  id?: string;
   question_en: string;
   question_es: string;
   answer_en: string;
@@ -50,7 +50,7 @@ export function EnhancedFAQ({
         <div className="space-y-4">
           {content.map((item, idx) => (
             <motion.div
-              key={item.id}
+              key={item.id || idx}
               initial={{ opacity: 0, y: 20 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: idx * 0.1 }}

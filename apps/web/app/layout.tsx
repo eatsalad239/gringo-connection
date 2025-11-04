@@ -5,6 +5,7 @@ import './globals.css';
 import { Nav } from '@/components/Nav';
 import { Footer } from '@/components/Footer';
 import { WhatsAppFloat } from '@/components/WhatsAppFloat';
+import { ScrollToTop } from '@/components/ScrollToTop';
 import { getLocale } from '@/lib/locale';
 
 const inter = Inter({ subsets: ['latin'] });
@@ -72,6 +73,7 @@ export default function RootLayout({
         <main className="pt-16">{children}</main>
         <Footer locale={locale} />
         <WhatsAppFloat />
+        <ScrollToTop />
       </body>
     </html>
   );
