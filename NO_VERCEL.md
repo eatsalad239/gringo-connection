@@ -35,4 +35,3 @@ pnpm deploy:cloudflare
 - ⏳ Waiting: GitHub repo connection
 
 **NO VERCEL - CLOUDFLARE PAGES ONLY!**
-

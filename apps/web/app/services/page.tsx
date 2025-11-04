@@ -1,6 +1,8 @@
 import { readFileSync } from 'fs';
 import { join } from 'path';
 import Link from 'next/link';
+import { getLocale, getLocalePrefix } from '@/lib/locale';
+import { Metadata } from 'next';
 
 // Content directory - adjust path based on where Next.js runs from
 const CONTENT_DIR = process.cwd().includes('apps/web')
@@ -12,8 +14,21 @@ async function getServices() {
   return JSON.parse(data).services || [];
 }
 
+export async function generateMetadata(): Promise<Metadata> {
+  const locale = getLocale();
+  const isEs = locale === 'es';
+  
+  return {
+    title: isEs ? 'Servicios — Gringo Connection' : 'Services — Gringo Connection',
+    description: isEs
+      ? 'Servicios de IA nivel empresa para América Latina'
+      : 'Enterprise-grade AI solutions for Latin America',
+  };
+}
+
 export default async function ServicesPage({ params }: { params: { locale?: string } }) {
-  const locale = params.locale || 'en';
+  const locale = getLocale();
+  const prefix = getLocalePrefix(locale);
   const isEs = locale === 'es';
   const services = await getServices();
 
@@ -42,7 +57,7 @@ export default async function ServicesPage({ params }: { params: { locale?: stri
               )}
             </ul>
             <Link
-              href={`/${locale}/contact`}
+              href={`${prefix}/contact`}
               className="mt-4 inline-block text-primary-600 hover:text-primary-700 text-sm font-medium"
             >
               {isEs ? 'Solicitar Consulta' : 'Request Consultation'} →

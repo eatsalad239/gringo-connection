@@ -24,7 +24,7 @@ jobs:
         run: pnpm install
       
       - name: Build Next.js
-        run: pnpm build
+        run: cd apps/web && pnpm build
         env:
           NEXT_PUBLIC_PLAUSIBLE_DOMAIN: ${{ secrets.PLAUSIBLE_DOMAIN }}
       
@@ -34,5 +34,6 @@ jobs:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           projectName: gringo-connection
-          directory: apps/web/.next
+          directory: apps/web/.next/standalone
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
+          workingDirectory: apps/web

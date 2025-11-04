@@ -1,9 +1,10 @@
 import Link from 'next/link';
+import { getLocale, getLocalePrefix } from '@/lib/locale';
 
 export default function CancelledPage({ params }: { params: { locale?: string } }) {
-  const locale = params.locale || 'en';
+  const locale = getLocale();
+  const prefix = getLocalePrefix(locale);
   const isEs = locale === 'es';
-  const prefix = isEs ? '/es' : '';
 
   return (
     <div className="max-w-2xl mx-auto px-4 py-20 text-center">

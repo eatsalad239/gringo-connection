@@ -1,5 +1,7 @@
 import { readFileSync } from 'fs';
 import { join } from 'path';
+import { getLocale, getLocalePrefix } from '@/lib/locale';
+import { Metadata } from 'next';
 
 // Content directory - adjust path based on where Next.js runs from
 const CONTENT_DIR = process.cwd().includes('apps/web')
@@ -11,8 +13,20 @@ async function getPartners() {
   return JSON.parse(data).partners || [];
 }
 
+export async function generateMetadata(): Promise<Metadata> {
+  const locale = getLocale();
+  const isEs = locale === 'es';
+  
+  return {
+    title: isEs ? 'Socios — Gringo Connection' : 'Partners — Gringo Connection',
+    description: isEs
+      ? 'Nuestros socios estratégicos en Medellín'
+      : 'Our strategic partners in Medellín',
+  };
+}
+
 export default async function PartnersPage({ params }: { params: { locale?: string } }) {
-  const locale = params.locale || 'en';
+  const locale = getLocale();
   const isEs = locale === 'es';
   const partners = await getPartners();
 

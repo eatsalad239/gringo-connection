@@ -2,6 +2,7 @@ import { readFileSync } from 'fs';
 import { join } from 'path';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
+import { getLocale, getLocalePrefix } from '@/lib/locale';
 
 // Content directory - adjust path based on where Next.js runs from
 const CONTENT_DIR = process.cwd().includes('apps/web')
@@ -23,7 +24,8 @@ export default async function VerticalPage({
 }: {
   params: { slug: string; locale?: string };
 }) {
-  const locale = params.locale || 'en';
+  const locale = getLocale();
+  const prefix = getLocalePrefix(locale);
   const isEs = locale === 'es';
   const verticals = await getVerticals();
   const services = await getServices();
@@ -86,7 +88,7 @@ export default async function VerticalPage({
 
       <div className="text-center">
         <Link
-          href={`/${locale}/contact`}
+          href={`${prefix}/contact`}
           className="bg-primary-600 hover:bg-primary-700 text-white px-8 py-3 rounded-lg font-semibold inline-block"
         >
           {isEs ? 'Contactar' : 'Get in Touch'}

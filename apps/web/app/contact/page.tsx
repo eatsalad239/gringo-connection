@@ -2,9 +2,10 @@
 
 import { useState } from 'react';
 import { Send } from 'lucide-react';
+import { useLocale } from '@/lib/locale-client';
 
 export default function ContactPage({ params }: { params: { locale?: string } }) {
-  const locale = params.locale || 'en';
+  const locale = useLocale();
   const isEs = locale === 'es';
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);

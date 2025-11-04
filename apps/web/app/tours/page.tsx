@@ -1,5 +1,7 @@
 import { readFileSync } from 'fs';
 import { join } from 'path';
+import { getLocale, getLocalePrefix } from '@/lib/locale';
+import { Metadata } from 'next';
 
 // Content directory - adjust path based on where Next.js runs from
 const CONTENT_DIR = process.cwd().includes('apps/web')
@@ -11,8 +13,20 @@ async function getTours() {
   return JSON.parse(data).tours || [];
 }
 
+export async function generateMetadata(): Promise<Metadata> {
+  const locale = getLocale();
+  const isEs = locale === 'es';
+  
+  return {
+    title: isEs ? 'Tours — Gringo Connection' : 'Tours & Experiences — Gringo Connection',
+    description: isEs
+      ? 'Tours y experiencias tecnológicas en Medellín'
+      : 'Tech tours and experiences in Medellín',
+  };
+}
+
 export default async function ToursPage({ params }: { params: { locale?: string } }) {
-  const locale = params.locale || 'en';
+  const locale = getLocale();
   const isEs = locale === 'es';
   const tours = await getTours();
 

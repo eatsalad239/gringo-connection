@@ -1,5 +1,7 @@
+import { getLocale } from '@/lib/locale';
+
 export default function PrivacyPage({ params }: { params: { locale?: string } }) {
-  const locale = params.locale || 'en';
+  const locale = getLocale();
   const isEs = locale === 'es';
 
   return (

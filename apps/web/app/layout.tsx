@@ -5,6 +5,7 @@ import './globals.css';
 import { Nav } from '@/components/Nav';
 import { Footer } from '@/components/Footer';
 import { WhatsAppFloat } from '@/components/WhatsAppFloat';
+import { getLocale } from '@/lib/locale';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -27,13 +28,37 @@ export default function RootLayout({
   children: React.ReactNode;
   params: { locale?: string };
 }) {
-  const locale = params.locale || 'en';
+  // Get locale from headers (set by middleware) or default to 'en'
+  const locale = getLocale();
 
   const plausibleDomain = process.env.NEXT_PUBLIC_PLAUSIBLE_DOMAIN || process.env.PLAUSIBLE_DOMAIN;
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://gringoconnection.com';
+
+  // Structured data (JSON-LD) for SEO
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: 'Gringo Connection',
+    url: baseUrl,
+    description: 'AI that elevates your brand. Built in Medellín.',
+    address: {
+      '@type': 'PostalAddress',
+      addressLocality: 'Medellín',
+      addressRegion: 'Antioquia',
+      addressCountry: 'CO',
+    },
+    sameAs: [
+      // Add social media links when available
+    ],
+  };
 
   return (
     <html lang={locale}>
       <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
         {plausibleDomain && (
           <Script
             defer
