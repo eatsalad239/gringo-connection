@@ -22,9 +22,9 @@ export function InteractiveDemo({ locale }: { locale: string }) {
     const interval = setInterval(() => {
       setMetrics((prev) => ({
         requests: prev.requests + Math.floor(Math.random() * 10),
-        uptime: 99.9 + Math.random() * 0.1,
+        uptime: Math.min(99.9 + Math.random() * 0.1, 100),
         latency: 40 + Math.random() * 15,
-        success: 99.5 + Math.random() * 0.5,
+        success: Math.min(99.5 + Math.random() * 0.5, 100),
       }));
     }, 2000);
 

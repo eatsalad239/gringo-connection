@@ -53,7 +53,7 @@ export default function RootLayout({
   };
 
   return (
-    <html lang={locale}>
+    <html lang={locale} className="scroll-smooth">
       <head>
         <script
           type="application/ld+json"
@@ -67,9 +67,9 @@ export default function RootLayout({
           />
         )}
       </head>
-      <body className={inter.className}>
+      <body className={`${inter.className} antialiased`}>
         <Nav locale={locale} />
-        <main>{children}</main>
+        <main className="pt-16">{children}</main>
         <Footer locale={locale} />
         <WhatsAppFloat />
       </body>

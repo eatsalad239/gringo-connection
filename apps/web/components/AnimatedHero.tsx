@@ -22,6 +22,7 @@ export function AnimatedHero({ content, locale }: { content: HeroContent; locale
   const opacity = useTransform(scrollY, [0, 300], [1, 0]);
 
   useEffect(() => {
+    if (typeof window === 'undefined') return;
     const handleMouseMove = (e: MouseEvent) => {
       setMousePosition({
         x: (e.clientX / window.innerWidth - 0.5) * 20,
@@ -67,16 +68,16 @@ export function AnimatedHero({ content, locale }: { content: HeroContent; locale
       </div>
 
       {/* Floating Particles */}
-      {[...Array(50)].map((_, i) => (
+      {typeof window !== 'undefined' && [...Array(50)].map((_, i) => (
         <motion.div
           key={i}
           className="absolute w-1 h-1 bg-white/30 rounded-full"
           initial={{
-            x: Math.random() * window.innerWidth,
-            y: Math.random() * window.innerHeight,
+            x: Math.random() * (typeof window !== 'undefined' ? window.innerWidth : 1920),
+            y: Math.random() * (typeof window !== 'undefined' ? window.innerHeight : 1080),
           }}
           animate={{
-            y: [null, Math.random() * window.innerHeight],
+            y: [null, Math.random() * (typeof window !== 'undefined' ? window.innerHeight : 1080)],
             opacity: [0.3, 0.7, 0.3],
           }}
           transition={{
