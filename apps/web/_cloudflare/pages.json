@@ -1,6 +1,7 @@
 {
   "build": {
-    "command": "pnpm install --no-frozen-lockfile && pnpm build",
+    "command": "pnpm install --no-frozen-lockfile && pnpm build && rm -rf .next/cache",
+    "outputDirectory": ".next",
     "rootDirectory": "apps/web"
   },
   "framework": "nextjs"
