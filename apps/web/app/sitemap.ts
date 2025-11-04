@@ -11,6 +11,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/partners',
     '/contact',
     '/coming-soon',
+    '/status',
     '/legal/privacy',
     '/legal/terms',
   ];

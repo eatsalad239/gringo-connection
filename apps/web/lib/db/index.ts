@@ -244,7 +244,7 @@ class Database {
   }
 
   // Transactions
-  async createTransaction(data: Omit<Transaction, 'id' | 'createdAt'>): Promise<Transaction> {
+  async createTransaction(data: Omit<Transaction, 'id' | 'createdAt' | 'balanceAfter'>): Promise<Transaction> {
     const id = `txn_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
     const account = this.accounts.get(data.accountId);
     if (!account) throw new Error('Account not found');

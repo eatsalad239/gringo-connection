@@ -13,12 +13,60 @@ const inter = Inter({ subsets: ['latin'] });
 export const metadata: Metadata = {
   title: 'Gringo Connection — AI that elevates your brand. Built in Medellín.',
   description: 'Websites, automations, concierge growth — bilingual, enterprise-grade, price after the plan.',
+  keywords: ['AI', 'automation', 'web development', 'Medellín', 'Colombia', 'bilingual', 'enterprise', 'concierge'],
+  authors: [{ name: 'Gringo Connection' }],
+  creator: 'Gringo Connection',
+  publisher: 'Gringo Connection',
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://gringoconnection.com'),
+  alternates: {
+    canonical: '/',
+    languages: {
+      'en': '/',
+      'es': '/es',
+    },
+  },
   openGraph: {
-    title: 'Gringo Connection',
-    description: 'AI that elevates your brand. Built in Medellín.',
-    type: 'website',
+    title: 'Gringo Connection — AI that elevates your brand',
+    description: 'Websites, automations, concierge growth — bilingual, enterprise-grade, price after the plan.',
+    url: process.env.NEXT_PUBLIC_SITE_URL || 'https://gringoconnection.com',
+    siteName: 'Gringo Connection',
+    images: [
+      {
+        url: '/og-image.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Gringo Connection - AI that elevates your brand',
+      },
+    ],
     locale: 'en_US',
+    type: 'website',
     alternateLocale: 'es_CO',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Gringo Connection — AI that elevates your brand',
+    description: 'Websites, automations, concierge growth — bilingual, enterprise-grade.',
+    images: ['/og-image.jpg'],
+    creator: '@gringoconnection',
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+  verification: {
+    // Add verification codes when available
   },
 };
 
@@ -56,6 +104,13 @@ export default function RootLayout({
   return (
     <html lang={locale} className="scroll-smooth">
       <head>
+        <link rel="icon" href="/favicon.ico" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+        <link rel="manifest" href="/site.webmanifest" />
+        <meta name="theme-color" content="#2563eb" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

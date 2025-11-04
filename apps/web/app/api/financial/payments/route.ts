@@ -28,6 +28,7 @@ export async function POST(request: NextRequest) {
     const payment = await db.createPayment(body);
     
     // Create transaction if account specified
+    // Note: balanceAfter is calculated automatically by createTransaction
     if (body.accountId) {
       await db.createTransaction({
         accountId: body.accountId,

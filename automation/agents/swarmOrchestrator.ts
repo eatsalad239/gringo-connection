@@ -54,14 +54,14 @@ const agents: Agent[] = [
     category: 'revenue',
     schedule: 'on-demand',
     dependencies: ['lead-qualification'],
-    status: 'paused', // Not built yet
+    status: 'active', // ✅ Built!
   },
   {
     id: 'referral',
     name: 'Referral Agent',
     category: 'revenue',
     schedule: 'friday-14:00',
-    status: 'paused',
+    status: 'active', // ✅ Built!
   },
   // Development Swarm
   {
@@ -123,6 +123,13 @@ const agents: Agent[] = [
     schedule: '07:00-daily',
     status: 'paused',
   },
+  {
+    id: 'deployment-status',
+    name: 'Deployment Status Agent',
+    category: 'operations',
+    schedule: 'on-demand',
+    status: 'active', // ✅ Built - monitors deployments and notifies team
+  },
 ];
 
 // Run an agent
@@ -155,6 +162,10 @@ async function runAgent(agent: Agent): Promise<{ success: boolean; duration: num
       case 'workflow':
         agentModule = await import('./workflowAutomationAgent.js');
         await agentModule.runWorkflowAutomation();
+        break;
+      case 'deployment-status':
+        agentModule = await import('./deploymentStatusAgent.js');
+        await agentModule.runDeploymentStatusCheck();
         break;
       default:
         return { success: false, duration: 0, error: 'Agent not implemented' };

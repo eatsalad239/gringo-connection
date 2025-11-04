@@ -57,21 +57,21 @@ export function EnhancedFAQ({
               className="bg-white rounded-xl border border-gray-200 overflow-hidden shadow-sm hover:shadow-md transition-shadow"
             >
               <button
-                onClick={() => setOpenId(openId === item.id ? null : item.id)}
+                onClick={() => setOpenId(openId === (item.id || `faq-${idx}`) ? null : (item.id || `faq-${idx}`))}
                 className="w-full px-6 py-5 flex items-center justify-between text-left hover:bg-gray-50 transition-colors"
               >
                 <span className="text-lg font-semibold text-gray-900 pr-8">
                   {isEs ? item.question_es : item.question_en}
                 </span>
                 <motion.div
-                  animate={{ rotate: openId === item.id ? 180 : 0 }}
+                  animate={{ rotate: openId === (item.id || `faq-${idx}`) ? 180 : 0 }}
                   transition={{ duration: 0.3 }}
                 >
                   <ChevronDown className="w-5 h-5 text-gray-500 flex-shrink-0" />
                 </motion.div>
               </button>
               <AnimatePresence>
-                {openId === item.id && (
+                {openId === (item.id || `faq-${idx}`) && (
                   <motion.div
                     initial={{ height: 0, opacity: 0 }}
                     animate={{ height: 'auto', opacity: 1 }}

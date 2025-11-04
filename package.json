@@ -30,8 +30,12 @@
     "agents:upsell": "tsx automation/agents/upsellAgent.ts",
     "agents:swarm": "tsx automation/agents/swarmOrchestrator.ts",
     "agents:performance": "tsx automation/agents/performanceMonitor.ts",
+    "agents:proposal": "tsx automation/agents/proposalGeneratorAgent.ts",
+    "agents:referral": "tsx automation/agents/referralAgent.ts",
+    "agents:status": "tsx automation/agents/deploymentStatusAgent.ts",
     "generate:code": "tsx automation/agents/codeGeneratorAgent.ts",
-    "email:eddy-agents": "tsx scripts/email-eddy-agents-package.ts"
+    "email:eddy-agents": "tsx scripts/email-eddy-agents-package.ts",
+    "email:gaps-audit": "tsx scripts/email-gaps-audit.ts"
   },
   "dependencies": {
     "@huggingface/inference": "^2.6.4",

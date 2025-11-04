@@ -89,7 +89,7 @@ export const analyticsService = {
 // Cloudflare Workers KV - Free tier: 100k reads/day, 1k writes/day
 // Perfect for caching and simple data storage
 export const kvService = {
-  async get(key: string, env?: { KV?: KVNamespace }): Promise<any> {
+  async get(key: string, env?: { KV?: any }): Promise<any> {
     if (!env?.KV) {
       console.warn('KV not configured');
       return null;
@@ -99,7 +99,7 @@ export const kvService = {
     return value ? JSON.parse(value) : null;
   },
 
-  async set(key: string, value: any, env?: { KV?: KVNamespace }): Promise<void> {
+  async set(key: string, value: any, env?: { KV?: any }): Promise<void> {
     if (!env?.KV) {
       console.warn('KV not configured');
       return;
@@ -108,7 +108,7 @@ export const kvService = {
     await env.KV.put(key, JSON.stringify(value));
   },
 
-  async delete(key: string, env?: { KV?: KVNamespace }): Promise<void> {
+  async delete(key: string, env?: { KV?: any }): Promise<void> {
     if (!env?.KV) {
       return;
     }

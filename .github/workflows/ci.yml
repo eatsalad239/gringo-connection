@@ -109,3 +109,12 @@ jobs:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           GROK_API_KEY: ${{ secrets.GROK_API_KEY }}
           PERPLEXITY_API_KEY: ${{ secrets.PERPLEXITY_API_KEY }}
+      
+      - name: Send deployment status
+        run: pnpm agents:status
+        env:
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+          NEXT_PUBLIC_SITE_URL: https://gringoconnection.com
+          ALERT_TO: ${{ secrets.ALERT_TO || 'dan@doorknockingsucks.com, Eddy@doorknockingsucks.com' }}
+          DEPLOYMENT_DATE: ${{ github.event.head_commit.timestamp || github.run_started_at }}
+          DEPLOYMENT_VERSION: ${{ github.sha }}
