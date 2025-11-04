@@ -3,6 +3,9 @@ import { db } from '@/lib/db';
 
 // Database automatically uses D1 in Cloudflare Pages, in-memory in dev
 
+// Force dynamic rendering (required for searchParams)
+export const dynamic = 'force-dynamic';
+
 export async function GET(request: NextRequest) {
   try {
     const searchParams = request.nextUrl.searchParams;

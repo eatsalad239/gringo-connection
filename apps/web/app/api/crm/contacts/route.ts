@@ -4,6 +4,9 @@ import { db } from '@/lib/db';
 // In production (Cloudflare Pages), D1 will be bound via env.DB
 // For now, using in-memory database that works everywhere
 
+// Force dynamic rendering (required for searchParams)
+export const dynamic = 'force-dynamic';
+
 export async function GET(request: NextRequest) {
   try {
     const searchParams = request.nextUrl.searchParams;

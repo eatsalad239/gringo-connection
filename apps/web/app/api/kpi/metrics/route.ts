@@ -1,6 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { kpiCalculator } from '@/lib/kpi/calculator';
 
+// Force dynamic rendering (required for searchParams)
+export const dynamic = 'force-dynamic';
+
 export async function GET(request: NextRequest) {
   try {
     const searchParams = request.nextUrl.searchParams;

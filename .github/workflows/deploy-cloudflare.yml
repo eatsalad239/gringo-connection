@@ -41,5 +41,7 @@ jobs:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           projectName: gringo-connection
-          directory: apps/web/out
+          # Server mode: Cloudflare auto-detects Next.js and uses Workers
+          # No directory needed - Cloudflare handles Next.js automatically
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
+          workingDirectory: apps/web
