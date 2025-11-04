@@ -130,6 +130,49 @@ const agents: Agent[] = [
     schedule: 'on-demand',
     status: 'active', // ✅ Built - monitors deployments and notifies team
   },
+  // Creative Swarm (NEW - Using Top Repos)
+  {
+    id: 'art-generation',
+    name: 'Art Generation Agent',
+    category: 'automation',
+    schedule: 'on-demand',
+    status: 'active', // ✅ Built - generates images for ads/social
+  },
+  {
+    id: 'video-generation',
+    name: 'Video Generation Agent',
+    category: 'automation',
+    schedule: 'on-demand',
+    status: 'active', // ✅ Built - generates videos for ads/social
+  },
+  {
+    id: 'ad-automation',
+    name: 'Ad Automation Agent',
+    category: 'automation',
+    schedule: 'on-demand',
+    status: 'active', // ✅ Built - creates complete ad campaigns
+  },
+  {
+    id: 'website-builder',
+    name: 'Website Builder Agent',
+    category: 'development',
+    schedule: 'on-demand',
+    status: 'active', // ✅ Built - builds complete websites
+  },
+  {
+    id: 'coding-assistant',
+    name: 'Coding Assistant Agent',
+    category: 'development',
+    schedule: 'on-demand',
+    status: 'active', // ✅ Built - helps with coding tasks
+  },
+  {
+    id: 'advice',
+    name: 'Advice Agent',
+    category: 'intelligence',
+    schedule: 'on-demand',
+    status: 'active', // ✅ Built - provides business/technical advice
+  },
 ];
 
 // Run an agent
@@ -167,6 +210,14 @@ async function runAgent(agent: Agent): Promise<{ success: boolean; duration: num
         agentModule = await import('./deploymentStatusAgent.js');
         await agentModule.runDeploymentStatusCheck();
         break;
+      case 'art-generation':
+      case 'video-generation':
+      case 'ad-automation':
+      case 'website-builder':
+      case 'coding-assistant':
+      case 'advice':
+        // Creative swarm agents are on-demand only
+        return { success: false, duration: 0, error: 'On-demand agent - use Creative Swarm' };
       default:
         return { success: false, duration: 0, error: 'Agent not implemented' };
     }

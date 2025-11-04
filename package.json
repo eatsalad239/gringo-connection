@@ -35,7 +35,14 @@
     "agents:status": "tsx automation/agents/deploymentStatusAgent.ts",
     "generate:code": "tsx automation/agents/codeGeneratorAgent.ts",
     "email:eddy-agents": "tsx scripts/email-eddy-agents-package.ts",
-    "email:gaps-audit": "tsx scripts/email-gaps-audit.ts"
+    "email:gaps-audit": "tsx scripts/email-gaps-audit.ts",
+    "swarm:art": "tsx automation/agents/artGenerationAgent.ts",
+    "swarm:video": "tsx automation/agents/videoGenerationAgent.ts",
+    "swarm:ads": "tsx automation/agents/adAutomationAgent.ts",
+    "swarm:website": "tsx automation/agents/websiteBuilderAgent.ts",
+    "swarm:code": "tsx automation/agents/codingAssistantAgent.ts",
+    "swarm:advice": "tsx automation/agents/adviceAgent.ts",
+    "swarm:creative": "tsx automation/agents/creativeSwarm.ts"
   },
   "dependencies": {
     "@huggingface/inference": "^2.6.4",
