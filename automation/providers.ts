@@ -323,23 +323,29 @@ export const mail = {
         async () => {
           return await fetchWithRetry(
             'https://api.resend.com/emails',
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${process.env.RESEND_API_KEY}`,
+            {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${process.env.RESEND_API_KEY}`,
+              },
+              body: JSON.stringify({
+                from: process.env.RESEND_FROM || 'Gringo Connection <info@gringoconnection.com>',
+                to: Array.isArray(msg.to) ? msg.to : [msg.to],
+                subject: msg.subject,
+                html: msg.html,
+                text: msg.text,
+                attachments: msg.attachments?.map((a) => ({
+                  filename: a.filename,
+                  content: a.content.toString('base64'),
+                })),
+              }),
+            },
+            { maxAttempts: 3, retryableErrors: [429, 500, 502, 503, 504] }
+          );
         },
-        body: JSON.stringify({
-          from: process.env.RESEND_FROM || 'Gringo Connection <info@gringoconnection.com>',
-          to: Array.isArray(msg.to) ? msg.to : [msg.to],
-          subject: msg.subject,
-          html: msg.html,
-          text: msg.text,
-          attachments: msg.attachments?.map((a) => ({
-            filename: a.filename,
-            content: a.content.toString('base64'),
-          })),
-        }),
-      });
+        { maxAttempts: 3 }
+      );
 
       const data = await res.json();
       if (data.id) {

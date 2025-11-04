@@ -1,0 +1,16 @@
+# Cloudflare Workers & Pages Configuration
+# D1 Database for CRM + Financial System
+
+name = "gringo-connection"
+compatibility_date = "2024-01-01"
+
+# D1 Database (Free SQLite)
+[[d1_databases]]
+binding = "DB"
+database_name = "gringo-crm"
+database_id = "" # Will be set after creating database via: wrangler d1 create gringo-crm
+
+# Environment variables (set in Cloudflare dashboard)
+[env.production]
+# All env vars are set in Cloudflare Pages dashboard
+
