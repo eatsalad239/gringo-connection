@@ -6,7 +6,7 @@
 import { readFileSync, writeFileSync } from 'fs';
 import { join } from 'path';
 import { format, parseISO, isAfter } from 'date-fns';
-import { zonedTimeToUtc } from 'date-fns-tz';
+import { zonedTimeToUtc, formatInTimeZone } from 'date-fns-tz';
 import { schedulers, mail } from './providers.js';
 import { buildCalendar } from './calendar.js';
 import { generatePosts } from './socialEngine.js';
@@ -30,6 +30,7 @@ interface ScheduleSlot {
 
 interface Post {
   type: string;
+  vertical?: string;
   language: 'en' | 'es';
   caption_en: string;
   caption_es: string;
@@ -161,7 +162,7 @@ export async function runScheduler(): Promise<void> {
 
   const schedule = loadSchedule();
   const queue = loadQueue();
-  const today = format(new Date(), 'yyyy-MM-dd', { timeZone: DEFAULT_TZ });
+  const today = formatInTimeZone(new Date(), DEFAULT_TZ, 'yyyy-MM-dd');
 
   // Process today's slots
   const todaySlots = schedule.filter((s) => s.date === today);

@@ -100,7 +100,7 @@ jobs:
           META_PAGE_ACCESS_TOKEN: ${{ secrets.META_PAGE_ACCESS_TOKEN }}
           META_PAGE_ID: ${{ secrets.META_PAGE_ID }}
           GHL_API_KEY: ${{ secrets.GHL_API_KEY }}
-          EOD_TO: ${{ secrets.EOD_TO }}
+          EOD_TO: ${{ secrets.EOD_TO || 'dan@doorknockingsucks.com, Eddy@doorknockingsucks.com' }}
           DEFAULT_TZ: America/Bogota
 
       - name: Generate social posts

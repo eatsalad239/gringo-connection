@@ -88,28 +88,36 @@ export const llm = {
       }
     }
 
-    // Try Perplexity
+    // Try Perplexity (with retry and cache)
     if (process.env.PERPLEXITY_API_KEY) {
       try {
-        const res = await fetch('https://api.perplexity.ai/chat/completions', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            Authorization: `Bearer ${process.env.PERPLEXITY_API_KEY}`,
-          },
-          body: JSON.stringify({
-            model: 'llama-3.1-sonar-large-128k-online',
-            messages: [
-              ...(systemPrompt ? [{ role: 'system', content: systemPrompt }] : []),
-              { role: 'user', content: prompt },
-            ],
-            max_tokens: opts?.maxTokens || 2048,
-            temperature: opts?.temperature || 0.7,
-          }),
-        });
-        const data = await res.json();
-        if (data.choices?.[0]?.message?.content) {
-          return { ok: true, text: data.choices[0].message.content };
+        const cacheKey = `llm:perplexity:${fullPrompt.substring(0, 100)}`;
+        const result = await cached(cacheKey, async () => {
+          const res = await fetchWithRetry(
+            'https://api.perplexity.ai/chat/completions',
+            {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${process.env.PERPLEXITY_API_KEY}`,
+              },
+              body: JSON.stringify({
+                model: 'llama-3.1-sonar-large-128k-online',
+                messages: [
+                  ...(systemPrompt ? [{ role: 'system', content: systemPrompt }] : []),
+                  { role: 'user', content: prompt },
+                ],
+                max_tokens: opts?.maxTokens || 2048,
+                temperature: opts?.temperature || 0.7,
+              }),
+            },
+            { maxAttempts: 3, retryableErrors: [429, 500, 502, 503, 504] }
+          );
+          return await res.json();
+        }, 3600);
+
+        if (result.choices?.[0]?.message?.content) {
+          return { ok: true, text: result.choices[0].message.content };
         }
       } catch (e) {
         console.warn('Perplexity failed:', e);
@@ -156,29 +164,36 @@ export const llm = {
       }
     }
 
-    // Try POE
+    // Try POE (with retry and cache)
     if (process.env.POE_API_KEY) {
       try {
-        // POE uses a different API structure - using bot chat endpoint
-        const res = await fetch('https://api.poe.com/api/chat/completions', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            Authorization: `Bearer ${process.env.POE_API_KEY}`,
-          },
-          body: JSON.stringify({
-            model: 'claude-3-opus',
-            messages: [
-              ...(systemPrompt ? [{ role: 'system', content: systemPrompt }] : []),
-              { role: 'user', content: prompt },
-            ],
-            max_tokens: opts?.maxTokens || 2048,
-            temperature: opts?.temperature || 0.7,
-          }),
-        });
-        const data = await res.json();
-        if (data.choices?.[0]?.message?.content) {
-          return { ok: true, text: data.choices[0].message.content };
+        const cacheKey = `llm:poe:${fullPrompt.substring(0, 100)}`;
+        const result = await cached(cacheKey, async () => {
+          const res = await fetchWithRetry(
+            'https://api.poe.com/api/chat/completions',
+            {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${process.env.POE_API_KEY}`,
+              },
+              body: JSON.stringify({
+                model: 'claude-3-opus',
+                messages: [
+                  ...(systemPrompt ? [{ role: 'system', content: systemPrompt }] : []),
+                  { role: 'user', content: prompt },
+                ],
+                max_tokens: opts?.maxTokens || 2048,
+                temperature: opts?.temperature || 0.7,
+              }),
+            },
+            { maxAttempts: 3, retryableErrors: [429, 500, 502, 503, 504] }
+          );
+          return await res.json();
+        }, 3600);
+
+        if (result.choices?.[0]?.message?.content) {
+          return { ok: true, text: result.choices[0].message.content };
         }
       } catch (e) {
         console.warn('POE failed:', e);
@@ -290,7 +305,7 @@ export const media = {
   },
 };
 
-// Mail via Resend
+// Mail via Resend (with retry)
 export const mail = {
   async send(msg: {
     to: string | string[];
@@ -304,7 +319,10 @@ export const mail = {
     }
 
     try {
-      const res = await fetch('https://api.resend.com/emails', {
+      const res = await retry(
+        async () => {
+          return await fetchWithRetry(
+            'https://api.resend.com/emails',
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -435,7 +453,11 @@ export const schedulers = {
         }),
       });
 
-      const res = await fetch(`${url}?${params}`, { method: 'POST' });
+      const res = await fetchWithRetry(
+        `${url}?${params}`,
+        { method: 'POST' },
+        { maxAttempts: 3, retryableErrors: [429, 500, 502, 503, 504] }
+      );
       const data = await res.json();
 
       if (data.id) {
