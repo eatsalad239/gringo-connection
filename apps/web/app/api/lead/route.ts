@@ -92,16 +92,16 @@ export async function POST(request: NextRequest) {
         await resend.emails.send({
           from: process.env.RESEND_FROM || 'Gringo Connection <info@gringoconnection.com>',
           to: recipients,
-          subject: `New Lead: ${name}`,
-          html: `
-            <h2>New Lead</h2>
-            <p><strong>Name:</strong> ${name}</p>
-            <p><strong>Email:</strong> ${email}</p>
-            ${phone ? `<p><strong>Phone:</strong> ${phone}</p>` : ''}
-            ${message ? `<p><strong>Message:</strong> ${message.replace(/\n/g, '<br>')}</p>` : ''}
-            <p><strong>Source:</strong> ${source}</p>
-            <p><strong>Submitted:</strong> ${new Date().toISOString()}</p>
-          `,
+        subject: `New Lead: ${name}`,
+        html: `
+          <h2>New Lead</h2>
+          <p><strong>Name:</strong> ${name}</p>
+          <p><strong>Email:</strong> ${email}</p>
+          ${phone ? `<p><strong>Phone:</strong> ${phone}</p>` : ''}
+          ${message ? `<p><strong>Message:</strong> ${message.replace(/\n/g, '<br>')}</p>` : ''}
+          <p><strong>Source:</strong> ${source}</p>
+          <p><strong>Submitted:</strong> ${new Date().toISOString()}</p>
+        `,
         });
       }
     }

@@ -10,6 +10,7 @@ const navItems = {
   en: [
     { href: '/', label: 'Home' },
     { href: '/services', label: 'Services' },
+    { href: '/grants', label: 'Grants' },
     { href: '/tours', label: 'Tours' },
     { href: '/partners', label: 'Partners' },
     { href: '/contact', label: 'Contact' },
@@ -17,6 +18,7 @@ const navItems = {
   es: [
     { href: '/es', label: 'Inicio' },
     { href: '/es/services', label: 'Servicios' },
+    { href: '/es/grants', label: 'Subvenciones' },
     { href: '/es/tours', label: 'Tours' },
     { href: '/es/partners', label: 'Socios' },
     { href: '/es/contact', label: 'Contacto' },

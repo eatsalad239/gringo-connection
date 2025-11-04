@@ -10,6 +10,7 @@ export function getLocale(pathname?: string): 'en' | 'es' {
   }
   
   // Try to get from headers (set by middleware)
+  // Only works server-side, fails gracefully during static generation
   try {
     const headersList = headers();
     const localeHeader = headersList.get('x-locale');
@@ -18,6 +19,7 @@ export function getLocale(pathname?: string): 'en' | 'es' {
     }
   } catch {
     // Headers not available (client-side or during build)
+    // Default to 'en'
   }
   
   return 'en';
