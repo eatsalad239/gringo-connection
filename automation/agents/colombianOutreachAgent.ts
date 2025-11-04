@@ -17,6 +17,9 @@ const CONTENT_DIR = join(process.cwd(), 'content');
 const DEFAULT_TZ = process.env.DEFAULT_TZ || 'America/Bogota';
 const EOD_TO = process.env.EOD_TO || 'dan@doorknockingsucks.com, Eddy@doorknockingsucks.com';
 
+// Números de contacto
+const EDDY_PHONE = '+505 5780 2643';
+
 // Direcciones de correo rotativas para Resend
 const SENDER_EMAILS = [
   'outreach@gringoconnection.com',
@@ -222,7 +225,8 @@ En Gringo Connection ayudamos a negocios de ${negocio.industria} en ${negocio.ub
 
 Mejores saludos,
 ${remitente.nombre}
-Gringo Connection`,
+Gringo Connection
+${EDDY_PHONE}`,
     serviciosRecomendados: ['Desarrollo de Sitio Web Personalizado', 'Automatización Empresarial', 'Sistema de CRM'],
   };
 
@@ -258,7 +262,8 @@ Gringo Connection`,
         Mejores saludos,<br>
         <strong>${remitente.nombre}</strong><br>
         Gringo Connection<br>
-        <a href="mailto:${remitente.correo}" style="color: #0066cc; text-decoration: none;">${remitente.correo}</a><br>
+        <a href="mailto:${remitente.correo}" style="color: #0066cc; text-decoration: none;">${remitente.correo}</a> | 
+        <a href="tel:${EDDY_PHONE.replace(/\s/g, '')}" style="color: #0066cc; text-decoration: none;">${EDDY_PHONE}</a><br>
         <a href="https://gringoconnection.com" style="color: #0066cc; text-decoration: none;">gringoconnection.com</a>
       </p>
 
