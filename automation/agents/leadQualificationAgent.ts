@@ -107,7 +107,7 @@ Output JSON:
     const useLocal = process.env.LOCAL_LLM === 'true';
     const result = await llm.text(prompt, {
       maxTokens: 500,
-      model: useLocal ? (process.env.OLLAMA_MODEL_FAST || 'llama3:8b') : undefined,
+      model: useLocal ? (process.env.OLLAMA_MODEL_FAST || 'phi3:mini') : undefined, // Default to lightweight model
       system: 'You are a lead qualification expert. Output only valid JSON.',
     });
 

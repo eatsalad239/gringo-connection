@@ -7,44 +7,50 @@
 
 ---
 
-## 🔧 **Setup Ollama (Local AI)**
+## 🔧 **Setup Ollama (Local AI) - Windows & Low-Spec Friendly**
 
-### **Step 1: Install Ollama**
+### **Step 1: Install Ollama (Windows)**
 
-```bash
-# macOS
-brew install ollama
+**Download**: https://ollama.ai/download/windows
 
-# OR download from https://ollama.ai/download
+**Or use installer**:
+```powershell
+# Download and run the installer from ollama.ai
+# It will install and start Ollama automatically
 ```
 
 ### **Step 2: Start Ollama**
 
-```bash
+**Windows**: Ollama usually runs automatically after install, or:
+```powershell
 ollama serve
 ```
 
-Keep this running in a terminal.
+Keep this running in a terminal/PowerShell window.
 
-### **Step 3: Pull Models**
+### **Step 3: Pull Models (Lightweight for Windows)**
 
-Open a NEW terminal (keep `ollama serve` running):
+Open a NEW terminal/PowerShell (keep `ollama serve` running):
 
-```bash
-# Fast model (for scoring, classification)
-ollama pull llama3:8b
+```powershell
+# Lightweight model (BEST for Windows/low-spec) - Only 1.3GB!
+ollama pull phi3:mini
 
-# Better quality model (for proposals, complex tasks)
-ollama pull llama3:70b
+# Small fast model (good balance) - 2.3GB
+ollama pull llama3.2:1b
 
-# Alternative fast model
-ollama pull qwen2:7b
+# Medium model (if you have 8GB+ RAM) - 4.7GB
+ollama pull llama3.2:3b
 
-# Alternative quality model
-ollama pull qwen2:72b
+# Skip large models (70b) - they need 40GB+ RAM
 ```
 
-**Note**: `llama3:8b` is ~4.7GB, `llama3:70b` is ~40GB. Start with 8b!
+**Recommended for Windows/Low-Spec**:
+- **phi3:mini** (1.3GB) - Fastest, works on 4GB RAM
+- **llama3.2:1b** (2.3GB) - Good balance, needs 4GB RAM
+- **llama3.2:3b** (4.7GB) - Better quality, needs 8GB RAM
+
+**Avoid**: llama3:8b (needs 16GB RAM), llama3:70b (needs 40GB+ RAM)
 
 ---
 
@@ -57,9 +63,13 @@ Add to your `.env`:
 LOCAL_LLM=true
 OLLAMA_URL=http://localhost:11434
 
-# Model preferences
-OLLAMA_MODEL_FAST=llama3:8b      # Fast tasks (scoring, classification)
-OLLAMA_MODEL_QUALITY=llama3:70b   # Quality tasks (proposals, documents)
+# Model preferences (Windows/Low-Spec Friendly)
+OLLAMA_MODEL_FAST=phi3:mini       # Fast tasks (1.3GB - BEST for Windows)
+OLLAMA_MODEL_QUALITY=llama3.2:3b  # Quality tasks (4.7GB - if you have 8GB+ RAM)
+
+# OR use smaller models for everything:
+# OLLAMA_MODEL_FAST=phi3:mini
+# OLLAMA_MODEL_QUALITY=phi3:mini   # Same model for everything (faster)
 ```
 
 ---
@@ -137,12 +147,15 @@ See `REVENUE_AGENTS_PLAN.md` for full list. Priority:
 
 ---
 
-## 💡 **Tips**
+## 💡 **Tips (Windows/Low-Spec)**
 
-- **Start with `llama3:8b`** - Fast enough, good quality
-- **Use `llama3:70b`** for proposals/documents when needed
+- **Start with `phi3:mini`** - Only 1.3GB, works on 4GB RAM Windows machines
+- **Use `llama3.2:1b` or `3b`** if you have 8GB+ RAM and want better quality
+- **Skip large models** - Don't use llama3:8b or 70b on low-spec machines
 - **Keep Ollama running** - It needs to be running for agents to work
-- **Monitor RAM** - `llama3:8b` uses ~6GB, `llama3:70b` uses ~40GB
+- **Monitor RAM** - Check Task Manager if things get slow
+- **Close other apps** - Free up RAM when running agents
+- **Use SSD if possible** - Faster model loading
 
 ---
 

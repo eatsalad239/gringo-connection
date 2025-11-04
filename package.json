@@ -23,7 +23,10 @@
     "qa:run": "tsx automation/agents/qaAgent.ts",
     "email:eddy-update": "tsx scripts/email-eddy-update.ts",
     "email:eddy-summary": "tsx scripts/email-eddy-executive-summary.ts",
-    "agents:qualify-leads": "tsx automation/agents/leadQualificationAgent.ts"
+    "agents:qualify-leads": "tsx automation/agents/leadQualificationAgent.ts",
+    "agents:dev-helper": "tsx automation/agents/devHelperAgent.ts",
+    "agents:workflow": "tsx automation/agents/workflowAutomationAgent.ts",
+    "generate:code": "tsx automation/agents/codeGeneratorAgent.ts"
   },
   "dependencies": {
     "@huggingface/inference": "^2.6.4",
