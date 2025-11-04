@@ -4,6 +4,8 @@
  */
 
 import { HfInference } from '@huggingface/inference';
+import { retry, fetchWithRetry } from './utils/retry.js';
+import { cached } from './utils/cache.js';
 
 const hf = process.env.HUGGINGFACE_KEY
   ? new HfInference(process.env.HUGGINGFACE_KEY)
@@ -19,54 +21,67 @@ export const llm = {
     const systemPrompt = opts?.system || '';
     const fullPrompt = systemPrompt ? `${systemPrompt}\n\n${prompt}` : prompt;
 
-    // Try Gemini
+    // Try Gemini (with retry and cache)
     if (process.env.GEMINI_API_KEY) {
       try {
-        const res = await fetch(
-          `https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=${process.env.GEMINI_API_KEY}`,
-          {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-              contents: [{ parts: [{ text: fullPrompt }] }],
-              generationConfig: {
-                maxOutputTokens: opts?.maxTokens || 2048,
-                temperature: opts?.temperature || 0.7,
-              },
-            }),
-          }
-        );
-        const data = await res.json();
-        if (data.candidates?.[0]?.content?.parts?.[0]?.text) {
-          return { ok: true, text: data.candidates[0].content.parts[0].text };
+        const cacheKey = `llm:gemini:${fullPrompt.substring(0, 100)}`;
+        const result = await cached(cacheKey, async () => {
+          const res = await fetchWithRetry(
+            `https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=${process.env.GEMINI_API_KEY}`,
+            {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({
+                contents: [{ parts: [{ text: fullPrompt }] }],
+                generationConfig: {
+                  maxOutputTokens: opts?.maxTokens || 2048,
+                  temperature: opts?.temperature || 0.7,
+                },
+              }),
+            },
+            { maxAttempts: 3, retryableErrors: [429, 500, 502, 503, 504] }
+          );
+          return await res.json();
+        }, 3600); // Cache for 1 hour
+
+        if (result.candidates?.[0]?.content?.parts?.[0]?.text) {
+          return { ok: true, text: result.candidates[0].content.parts[0].text };
         }
       } catch (e) {
         console.warn('Gemini failed:', e);
       }
     }
 
-    // Try Grok
+    // Try Grok (with retry and cache)
     if (process.env.GROK_API_KEY) {
       try {
-        const res = await fetch('https://api.x.ai/v1/chat/completions', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            Authorization: `Bearer ${process.env.GROK_API_KEY}`,
-          },
-          body: JSON.stringify({
-            model: 'grok-beta',
-            messages: [
-              ...(systemPrompt ? [{ role: 'system', content: systemPrompt }] : []),
-              { role: 'user', content: prompt },
-            ],
-            max_tokens: opts?.maxTokens || 2048,
-            temperature: opts?.temperature || 0.7,
-          }),
-        });
-        const data = await res.json();
-        if (data.choices?.[0]?.message?.content) {
-          return { ok: true, text: data.choices[0].message.content };
+        const cacheKey = `llm:grok:${fullPrompt.substring(0, 100)}`;
+        const result = await cached(cacheKey, async () => {
+          const res = await fetchWithRetry(
+            'https://api.x.ai/v1/chat/completions',
+            {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${process.env.GROK_API_KEY}`,
+              },
+              body: JSON.stringify({
+                model: 'grok-beta',
+                messages: [
+                  ...(systemPrompt ? [{ role: 'system', content: systemPrompt }] : []),
+                  { role: 'user', content: prompt },
+                ],
+                max_tokens: opts?.maxTokens || 2048,
+                temperature: opts?.temperature || 0.7,
+              }),
+            },
+            { maxAttempts: 3, retryableErrors: [429, 500, 502, 503, 504] }
+          );
+          return await res.json();
+        }, 3600);
+
+        if (result.choices?.[0]?.message?.content) {
+          return { ok: true, text: result.choices[0].message.content };
         }
       } catch (e) {
         console.warn('Grok failed:', e);
@@ -101,32 +116,40 @@ export const llm = {
       }
     }
 
-    // Try AIMLAPI (300+ models available!)
+    // Try AIMLAPI (300+ models available!) with retry and cache
     if (process.env.AIMLAPI_API_KEY) {
       try {
         // Select best model based on task or use default
         // AIMLAPI supports: gpt-4-turbo, claude-3-opus, claude-3-sonnet, gemini-pro, llama-3-70b, etc.
         const aimlapiModel = opts?.model || process.env.AIMLAPI_MODEL || 'gpt-4-turbo';
+        const cacheKey = `llm:aimlapi:${aimlapiModel}:${fullPrompt.substring(0, 100)}`;
         
-        const res = await fetch('https://api.aimlapi.com/v1/chat/completions', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            Authorization: `Bearer ${process.env.AIMLAPI_API_KEY}`,
-          },
-          body: JSON.stringify({
-            model: aimlapiModel,
-            messages: [
-              ...(systemPrompt ? [{ role: 'system', content: systemPrompt }] : []),
-              { role: 'user', content: prompt },
-            ],
-            max_tokens: opts?.maxTokens || 2048,
-            temperature: opts?.temperature || 0.7,
-          }),
-        });
-        const data = await res.json();
-        if (data.choices?.[0]?.message?.content) {
-          return { ok: true, text: data.choices[0].message.content };
+        const result = await cached(cacheKey, async () => {
+          const res = await fetchWithRetry(
+            'https://api.aimlapi.com/v1/chat/completions',
+            {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${process.env.AIMLAPI_API_KEY}`,
+              },
+              body: JSON.stringify({
+                model: aimlapiModel,
+                messages: [
+                  ...(systemPrompt ? [{ role: 'system', content: systemPrompt }] : []),
+                  { role: 'user', content: prompt },
+                ],
+                max_tokens: opts?.maxTokens || 2048,
+                temperature: opts?.temperature || 0.7,
+              }),
+            },
+            { maxAttempts: 3, retryableErrors: [429, 500, 502, 503, 504] }
+          );
+          return await res.json();
+        }, 3600);
+
+        if (result.choices?.[0]?.message?.content) {
+          return { ok: true, text: result.choices[0].message.content };
         }
       } catch (e) {
         console.warn('AIMLAPI failed:', e);

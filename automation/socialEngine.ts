@@ -6,6 +6,7 @@
 import { readFileSync, writeFileSync } from 'fs';
 import { join } from 'path';
 import { llm } from './providers.js';
+import { retry } from './utils/retry.js';
 
 interface Post {
   type: 'authority' | 'lifestyle' | 'testimonial' | 'event' | 'offer';
@@ -121,7 +122,11 @@ export async function generatePosts(): Promise<void> {
   const allVariations: Post[] = [];
 
   for (const seed of seeds) {
-    const variations = await generatePostVariations(seed);
+    // Use retry logic for post generation
+    const variations = await retry(
+      () => generatePostVariations(seed),
+      { maxAttempts: 3, initialDelay: 1000 }
+    );
     allVariations.push(...variations);
     
     // Small delay to avoid rate limits

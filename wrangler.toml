@@ -1,7 +1,0 @@
-# Cloudflare Pages configuration
-# Pages projects don't use wrangler.toml for configuration
-# Build settings are configured in the Cloudflare Pages dashboard
-# This file is kept for reference only
-
-compatibility_date = "2024-01-01"
-

@@ -11,12 +11,13 @@ import { schedulers, mail } from './providers.js';
 import { buildCalendar } from './calendar.js';
 import { generatePosts } from './socialEngine.js';
 import { createPostingPack } from './postingPack.js';
+import { refreshOldContent } from './contentRefresh.js';
 
 const CONTENT_DIR = join(process.cwd(), 'content');
 const SCHEDULE_PATH = join(CONTENT_DIR, 'social', 'schedule.json');
 const QUEUE_PATH = join(CONTENT_DIR, 'social', 'queue.json');
 const DEFAULT_TZ = process.env.DEFAULT_TZ || 'America/Bogota';
-const EOD_TO = process.env.EOD_TO || 'dan@doorknockingsucks.com';
+const EOD_TO = process.env.EOD_TO || 'dan@doorknockingsucks.com, Eddy@doorknockingsucks.com';
 
 interface ScheduleSlot {
   date: string;
@@ -145,6 +146,13 @@ async function schedulePost(slot: ScheduleSlot, post: Post): Promise<boolean> {
 export async function runScheduler(): Promise<void> {
   console.log('🚀 Starting daily scheduler...');
 
+  // Refresh old content (once per week)
+  const dayOfWeek = new Date().getDay();
+  if (dayOfWeek === 0) { // Sunday
+    console.log('🔄 Running weekly content refresh...');
+    await refreshOldContent();
+  }
+
   // Refresh calendar
   await buildCalendar();
 
@@ -174,6 +182,20 @@ export async function runScheduler(): Promise<void> {
 
     // Small delay
     await new Promise((resolve) => setTimeout(resolve, 500));
+  }
+
+  // Auto-run QA agent on new posts
+  if (process.env.AUTO_QA !== 'false') {
+    try {
+      const { runQA } = await import('./agents/qaAgent.js');
+      console.log('🔍 Running QA agent on unverified posts...');
+      await runQA();
+      // Reload queue after QA
+      const refreshedQueue = loadQueue();
+      Object.assign(queue, refreshedQueue);
+    } catch (e) {
+      console.warn('QA agent failed:', e);
+    }
   }
 
   // If unscheduled posts, create posting pack

@@ -11,7 +11,7 @@ import { mail, llm } from '../providers.js';
 const CONTENT_DIR = join(process.cwd(), 'content');
 const GRANTS_PATH = join(CONTENT_DIR, 'grants', 'grants_matrix.json');
 const DEFAULT_TZ = process.env.DEFAULT_TZ || 'America/Bogota';
-const EOD_TO = process.env.EOD_TO || 'dan@doorknockingsucks.com';
+const EOD_TO = process.env.EOD_TO || 'dan@doorknockingsucks.com, Eddy@doorknockingsucks.com';
 
 interface Grant {
   program: string;

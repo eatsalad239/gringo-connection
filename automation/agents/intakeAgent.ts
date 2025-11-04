@@ -12,7 +12,7 @@ const CONTENT_DIR = join(process.cwd(), 'content');
 const TOURS_PATH = join(CONTENT_DIR, 'tours.json');
 const QUEUE_PATH = join(CONTENT_DIR, 'social', 'queue.json');
 const DEFAULT_TZ = process.env.DEFAULT_TZ || 'America/Bogota';
-const EOD_TO = process.env.EOD_TO || 'dan@doorknockingsucks.com';
+const EOD_TO = process.env.EOD_TO || 'dan@doorknockingsucks.com, Eddy@doorknockingsucks.com';
 
 async function generateQuestions(): Promise<{ en: string[]; es: string[] }> {
   const queue = JSON.parse(readFileSync(QUEUE_PATH, 'utf-8'));

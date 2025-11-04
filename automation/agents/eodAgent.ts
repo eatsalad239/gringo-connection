@@ -9,7 +9,7 @@ import { format } from 'date-fns-tz';
 import { mail, llm } from '../providers.js';
 
 const DEFAULT_TZ = process.env.DEFAULT_TZ || 'America/Bogota';
-const EOD_TO = process.env.EOD_TO || 'dan@doorknockingsucks.com';
+const EOD_TO = process.env.EOD_TO || 'dan@doorknockingsucks.com, Eddy@doorknockingsucks.com';
 
 async function generateReport(): Promise<{ en: string; es: string }> {
   const prompt = `Generate an end-of-day report for Gringo Connection operations.

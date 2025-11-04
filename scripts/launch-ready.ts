@@ -6,7 +6,7 @@ import { mail } from '../automation/providers.js';
 import { format } from 'date-fns-tz';
 
 const DEFAULT_TZ = process.env.DEFAULT_TZ || 'America/Bogota';
-const EOD_TO = process.env.EOD_TO || 'dan@doorknockingsucks.com';
+const EOD_TO = process.env.EOD_TO || 'dan@doorknockingsucks.com, Eddy@doorknockingsucks.com';
 
 const today = format(new Date(), 'yyyy-MM-dd', { timeZone: DEFAULT_TZ });
 

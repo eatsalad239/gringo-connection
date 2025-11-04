@@ -16,7 +16,11 @@
     "ads:generate": "tsx automation/adGenerator.ts",
     "tours:run": "tsx automation/tourEngine.ts",
     "grants:run": "tsx automation/grantRadar.ts",
-    "emails:run": "tsx automation/emailEngine.ts"
+    "emails:run": "tsx automation/emailEngine.ts",
+    "content:bulk": "tsx automation/bulkGenerator.ts",
+    "content:refresh": "tsx automation/contentRefresh.ts",
+    "media:generate": "tsx automation/mediaGenerator.ts",
+    "qa:run": "tsx automation/agents/qaAgent.ts"
   },
   "dependencies": {
     "@huggingface/inference": "^2.6.4",

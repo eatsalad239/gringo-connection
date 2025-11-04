@@ -5,7 +5,7 @@
 
 import { mail } from '../providers.js';
 
-const ALERT_TO = process.env.ALERT_TO || 'dan@doorknockingsucks.com';
+const ALERT_TO = process.env.ALERT_TO || 'dan@doorknockingsucks.com, Eddy@doorknockingsucks.com';
 const SLACK_WEBHOOK_URL = process.env.SLACK_WEBHOOK_URL;
 
 interface Alert {
