@@ -34,6 +34,6 @@ jobs:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           projectName: gringo-connection
-          directory: apps/web/.next/standalone
+          directory: apps/web/out
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
           workingDirectory: apps/web
