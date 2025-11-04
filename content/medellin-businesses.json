@@ -1,0 +1,368 @@
+{
+  "businesses": [
+    {
+      "id": "rest-001",
+      "name": "Restaurante Mondongo's",
+      "website": "https://www.mondongos.com.co",
+      "businessType": "restaurant",
+      "category": "Restaurant",
+      "contactEmail": "info@mondongos.com.co"
+    },
+    {
+      "id": "rest-002",
+      "name": "Café Pergamino",
+      "website": "https://www.cafepergamino.com",
+      "businessType": "restaurant",
+      "category": "Cafe",
+      "contactEmail": "info@cafepergamino.com"
+    },
+    {
+      "id": "rest-003",
+      "name": "Crepes & Waffles",
+      "website": "https://www.crepesywaffles.com",
+      "businessType": "restaurant",
+      "category": "Restaurant"
+    },
+    {
+      "id": "rest-004",
+      "name": "Hato Viejo",
+      "website": "https://www.hatoviejo.com",
+      "businessType": "restaurant",
+      "category": "Restaurant"
+    },
+    {
+      "id": "rest-005",
+      "name": "El Rancherito",
+      "website": "https://www.elrancherito.com",
+      "businessType": "restaurant",
+      "category": "Restaurant"
+    },
+    {
+      "id": "beauty-001",
+      "name": "Salón de Belleza Élite",
+      "website": "https://www.salonelite.com.co",
+      "businessType": "beauty",
+      "category": "Beauty Salon"
+    },
+    {
+      "id": "beauty-002",
+      "name": "Spa Relajante",
+      "website": "https://www.sparelajante.com.co",
+      "businessType": "beauty",
+      "category": "Spa"
+    },
+    {
+      "id": "beauty-003",
+      "name": "Barbería Moderna",
+      "website": "https://www.barberiamoderna.com.co",
+      "businessType": "beauty",
+      "category": "Barbershop"
+    },
+    {
+      "id": "beauty-004",
+      "name": "Estética Facial",
+      "website": "https://www.esteticafacial.com.co",
+      "businessType": "beauty",
+      "category": "Beauty Salon"
+    },
+    {
+      "id": "beauty-005",
+      "name": "Manicure & Pedicure Pro",
+      "website": "https://www.manicurepro.com.co",
+      "businessType": "beauty",
+      "category": "Nail Salon"
+    },
+    {
+      "id": "gym-001",
+      "name": "Bodytech Medellín",
+      "website": "https://www.bodytech.com.co",
+      "businessType": "gym",
+      "category": "Gym"
+    },
+    {
+      "id": "gym-002",
+      "name": "Smart Fit El Poblado",
+      "website": "https://www.smartfit.com.co",
+      "businessType": "gym",
+      "category": "Gym"
+    },
+    {
+      "id": "gym-003",
+      "name": "CrossFit Medellín",
+      "website": "https://www.crossfitmedellin.com.co",
+      "businessType": "gym",
+      "category": "CrossFit"
+    },
+    {
+      "id": "gym-004",
+      "name": "Yoga Studio Medellín",
+      "website": "https://www.yogamedellin.com.co",
+      "businessType": "gym",
+      "category": "Yoga Studio"
+    },
+    {
+      "id": "gym-005",
+      "name": "Pilates Center",
+      "website": "https://www.pilatescenter.com.co",
+      "businessType": "gym",
+      "category": "Pilates"
+    },
+    {
+      "id": "realestate-001",
+      "name": "Inmobiliaria Metro",
+      "website": "https://www.inmobiliariametro.com.co",
+      "businessType": "realestate",
+      "category": "Real Estate"
+    },
+    {
+      "id": "realestate-002",
+      "name": "Propiedades El Poblado",
+      "website": "https://www.propiedadespoblado.com.co",
+      "businessType": "realestate",
+      "category": "Real Estate"
+    },
+    {
+      "id": "realestate-003",
+      "name": "Casas y Apartamentos",
+      "website": "https://www.casasapartamentos.com.co",
+      "businessType": "realestate",
+      "category": "Real Estate"
+    },
+    {
+      "id": "realestate-004",
+      "name": "Inmobiliaria Premium",
+      "website": "https://www.inmobiliariapremium.com.co",
+      "businessType": "realestate",
+      "category": "Real Estate"
+    },
+    {
+      "id": "realestate-005",
+      "name": "Venta y Arriendo",
+      "website": "https://www.ventayarriendo.com.co",
+      "businessType": "realestate",
+      "category": "Real Estate"
+    },
+    {
+      "id": "medical-001",
+      "name": "Clínica Medellín",
+      "website": "https://www.clinicamedellin.com.co",
+      "businessType": "medical",
+      "category": "Medical Clinic"
+    },
+    {
+      "id": "medical-002",
+      "name": "Centro Médico El Poblado",
+      "website": "https://www.centromedicopoblado.com.co",
+      "businessType": "medical",
+      "category": "Medical Clinic"
+    },
+    {
+      "id": "medical-003",
+      "name": "Dental Care Medellín",
+      "website": "https://www.dentalcaremedellin.com.co",
+      "businessType": "medical",
+      "category": "Dental Clinic"
+    },
+    {
+      "id": "medical-004",
+      "name": "Oftalmología Avanzada",
+      "website": "https://www.oftalmologiaavanzada.com.co",
+      "businessType": "medical",
+      "category": "Medical Clinic"
+    },
+    {
+      "id": "medical-005",
+      "name": "Pediatría Especializada",
+      "website": "https://www.pediatriaespecializada.com.co",
+      "businessType": "medical",
+      "category": "Medical Clinic"
+    },
+    {
+      "id": "law-001",
+      "name": "Bufete Legal Medellín",
+      "website": "https://www.bufetelegal.com.co",
+      "businessType": "law",
+      "category": "Law Firm"
+    },
+    {
+      "id": "law-002",
+      "name": "Abogados Asociados",
+      "website": "https://www.abogadosasociados.com.co",
+      "businessType": "law",
+      "category": "Law Firm"
+    },
+    {
+      "id": "law-003",
+      "name": "Estudio Jurídico",
+      "website": "https://www.estudiojuridico.com.co",
+      "businessType": "law",
+      "category": "Law Firm"
+    },
+    {
+      "id": "law-004",
+      "name": "Consultoría Legal",
+      "website": "https://www.consultorialegal.com.co",
+      "businessType": "law",
+      "category": "Law Firm"
+    },
+    {
+      "id": "law-005",
+      "name": "Derecho Corporativo",
+      "website": "https://www.derechocorporativo.com.co",
+      "businessType": "law",
+      "category": "Law Firm"
+    },
+    {
+      "id": "accounting-001",
+      "name": "Contadores Públicos",
+      "website": "https://www.contadorespublicos.com.co",
+      "businessType": "accounting",
+      "category": "Accounting"
+    },
+    {
+      "id": "accounting-002",
+      "name": "Servicios Contables Medellín",
+      "website": "https://www.servicioscontables.com.co",
+      "businessType": "accounting",
+      "category": "Accounting"
+    },
+    {
+      "id": "accounting-003",
+      "name": "Asesoría Fiscal",
+      "website": "https://www.asesoriafiscal.com.co",
+      "businessType": "accounting",
+      "category": "Accounting"
+    },
+    {
+      "id": "accounting-004",
+      "name": "Consultoría Tributaria",
+      "website": "https://www.consultoriatributaria.com.co",
+      "businessType": "accounting",
+      "category": "Accounting"
+    },
+    {
+      "id": "accounting-005",
+      "name": "Contaduría Integral",
+      "website": "https://www.contaduriaintegral.com.co",
+      "businessType": "accounting",
+      "category": "Accounting"
+    },
+    {
+      "id": "tourism-001",
+      "name": "Tours Medellín",
+      "website": "https://www.toursmedellin.com.co",
+      "businessType": "tourism",
+      "category": "Tourism"
+    },
+    {
+      "id": "tourism-002",
+      "name": "Guías Turísticos",
+      "website": "https://www.guiasturisticos.com.co",
+      "businessType": "tourism",
+      "category": "Tourism"
+    },
+    {
+      "id": "tourism-003",
+      "name": "Aventura Colombia",
+      "website": "https://www.aventuracolombia.com.co",
+      "businessType": "tourism",
+      "category": "Tourism"
+    },
+    {
+      "id": "tourism-004",
+      "name": "Turismo Paisa",
+      "website": "https://www.turismopaisa.com.co",
+      "businessType": "tourism",
+      "category": "Tourism"
+    },
+    {
+      "id": "tourism-005",
+      "name": "Excursiones Medellín",
+      "website": "https://www.excursionesmedellin.com.co",
+      "businessType": "tourism",
+      "category": "Tourism"
+    },
+    {
+      "id": "retail-001",
+      "name": "Tienda de Ropa Fashion",
+      "website": "https://www.tiendaropafashion.com.co",
+      "businessType": "retail",
+      "category": "Retail"
+    },
+    {
+      "id": "retail-002",
+      "name": "Electrodomésticos Plus",
+      "website": "https://www.electrodomesticosplus.com.co",
+      "businessType": "retail",
+      "category": "Retail"
+    },
+    {
+      "id": "retail-003",
+      "name": "Deportes y Más",
+      "website": "https://www.deportesymas.com.co",
+      "businessType": "retail",
+      "category": "Retail"
+    },
+    {
+      "id": "retail-004",
+      "name": "Joyería Elegante",
+      "website": "https://www.joyeriaelegante.com.co",
+      "businessType": "retail",
+      "category": "Retail"
+    },
+    {
+      "id": "retail-005",
+      "name": "Muebles y Decoración",
+      "website": "https://www.mueblesdecoracion.com.co",
+      "businessType": "retail",
+      "category": "Retail"
+    },
+    {
+      "id": "tech-001",
+      "name": "Desarrollo de Software Medellín",
+      "website": "https://www.desarrollosoftware.com.co",
+      "businessType": "tech",
+      "category": "Tech"
+    },
+    {
+      "id": "tech-002",
+      "name": "Agencia Digital",
+      "website": "https://www.agenciadigital.com.co",
+      "businessType": "tech",
+      "category": "Tech"
+    },
+    {
+      "id": "tech-003",
+      "name": "Soluciones IT",
+      "website": "https://www.solucionesit.com.co",
+      "businessType": "tech",
+      "category": "Tech"
+    },
+    {
+      "id": "tech-004",
+      "name": "Marketing Digital",
+      "website": "https://www.marketingdigital.com.co",
+      "businessType": "tech",
+      "category": "Tech"
+    },
+    {
+      "id": "tech-005",
+      "name": "Apps y Web",
+      "website": "https://www.appsyweb.com.co",
+      "businessType": "tech",
+      "category": "Tech"
+    }
+  ],
+  "topBusinessTypes": [
+    "restaurant",
+    "beauty",
+    "gym",
+    "realestate",
+    "medical",
+    "law",
+    "accounting",
+    "tourism",
+    "retail",
+    "tech"
+  ]
+}
