@@ -5,10 +5,24 @@
       "name": "Gato Blanco",
       "name_en": "Gato Blanco",
       "name_es": "Gato Blanco",
-      "description_en": "Partner tours and experiences in Zona Rosa, Medellín",
-      "description_es": "Tours y experiencias asociadas en Zona Rosa, Medellín",
+      "description_en": "Premium partner experiences in Zona Rosa, Medellín. Gato Blanco combines luxury hospitality with innovative AI-driven concierge services, offering exclusive tours, events, and cultural experiences.",
+      "description_es": "Experiencias premium asociadas en Zona Rosa, Medellín. Gato Blanco combina hospitalidad de lujo con servicios de conserjería innovadores impulsados por IA, ofreciendo tours exclusivos, eventos y experiencias culturales.",
       "website": "https://gatoblanco.app",
-      "logo": "/partners/gato-blanco.png"
+      "logo": "/partners/gato-blanco.png",
+      "highlight": true,
+      "location": "Zona Rosa, Medellín",
+      "services": [
+        "Premium hospitality experiences",
+        "AI-powered concierge services",
+        "Exclusive cultural tours",
+        "Event hosting and management"
+      ],
+      "services_es": [
+        "Experiencias de hospitalidad premium",
+        "Servicios de conserjería impulsados por IA",
+        "Tours culturales exclusivos",
+        "Alojamiento y gestión de eventos"
+      ]
     }
   ]
 }

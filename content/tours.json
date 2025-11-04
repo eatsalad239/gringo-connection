@@ -1,16 +1,45 @@
 {
   "tours": [
     {
+      "id": "gato-blanco-premium",
+      "name": "Gato Blanco Premium Experience",
+      "name_en": "Gato Blanco Premium Experience",
+      "name_es": "Experiencia Premium Gato Blanco",
+      "description_en": "Exclusive partnership experience at Gato Blanco in Zona Rosa, Medellín. Luxury hospitality meets AI innovation. Includes premium dining, AI concierge demo, and personalized automation consultation.",
+      "description_es": "Experiencia exclusiva de asociación en Gato Blanco en Zona Rosa, Medellín. Hospitalidad de lujo se encuentra con innovación de IA. Incluye cena premium, demo de conserjería con IA y consultoría personalizada de automatización.",
+      "capacity": 6,
+      "duration": "4 hours",
+      "price": 250000,
+      "currency": "COP",
+      "partner": "gato-blanco",
+      "location": "Zona Rosa, Medellín",
+      "dates": [],
+      "blackoutDates": [],
+      "upsells": [
+        {
+          "name": "Extended AI Workshop",
+          "name_es": "Taller Extendido de IA",
+          "price": 100000
+        },
+        {
+          "name": "Private Group Booking",
+          "name_es": "Reserva de Grupo Privado",
+          "price": 50000
+        }
+      ]
+    },
+    {
       "id": "ai-coffee",
       "name": "AI Coffee Tour",
       "name_en": "AI Coffee Tour",
       "name_es": "Tour de Café con IA",
-      "description_en": "Experience Medellín's tech scene over coffee. Visit AI startups, meet founders, and discuss automation opportunities.",
-      "description_es": "Experimenta la escena tecnológica de Medellín tomando café. Visita startups de IA, conoce fundadores y discute oportunidades de automatización.",
+      "description_en": "Experience Medellín's tech scene over coffee. Visit AI startups, meet founders, and discuss automation opportunities. Includes stops at Gato Blanco for premium refreshments.",
+      "description_es": "Experimenta la escena tecnológica de Medellín tomando café. Visita startups de IA, conoce fundadores y discute oportunidades de automatización. Incluye paradas en Gato Blanco para refrescos premium.",
       "capacity": 8,
       "duration": "3 hours",
       "price": 150000,
       "currency": "COP",
+      "partner": "gato-blanco",
       "dates": [],
       "blackoutDates": [],
       "upsells": [
@@ -26,12 +55,14 @@
       "name": "Cocktail & Code",
       "name_en": "Cocktail & Code",
       "name_es": "Cóctel y Código",
-      "description_en": "Evening networking event combining cocktails with code demos. Perfect for entrepreneurs exploring AI solutions.",
-      "description_es": "Evento de networking nocturno que combina cócteles con demos de código. Perfecto para emprendedores que exploran soluciones de IA.",
+      "description_en": "Evening networking event at Gato Blanco combining premium cocktails with AI code demos. Perfect for entrepreneurs exploring enterprise-grade solutions.",
+      "description_es": "Evento de networking nocturno en Gato Blanco que combina cócteles premium con demos de código de IA. Perfecto para emprendedores que exploran soluciones de nivel empresarial.",
       "capacity": 12,
       "duration": "2 hours",
       "price": 120000,
       "currency": "COP",
+      "partner": "gato-blanco",
+      "location": "Gato Blanco, Zona Rosa",
       "dates": [],
       "blackoutDates": [],
       "upsells": [
