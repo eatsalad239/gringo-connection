@@ -7,6 +7,8 @@ import { InnovationShowcase } from '@/components/InnovationShowcase';
 import { GrantReadyBadge } from '@/components/GrantReadyBadge';
 import { EnhancedTestimonials } from '@/components/EnhancedTestimonials';
 import { EnhancedFAQ } from '@/components/EnhancedFAQ';
+import { FeatureShowcase } from '@/components/FeatureShowcase';
+import { ParticleBackground } from '@/components/ParticleBackground';
 import { getContent } from '@/lib/content';
 import { getLocale } from '@/lib/locale';
 import { Metadata } from 'next';
@@ -43,9 +45,11 @@ export default async function Home({
   const content = await getContent(locale);
 
   return (
-    <div>
+    <div className="relative">
+      <ParticleBackground />
       <AnimatedHero content={content.hero} locale={locale} />
       <GrantReadyBadge locale={locale} />
+      <FeatureShowcase locale={locale} />
       <TechStackShowcase locale={locale} />
       <PerformanceMetrics locale={locale} />
       <InnovationShowcase locale={locale} />

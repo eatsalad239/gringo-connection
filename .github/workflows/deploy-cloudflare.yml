@@ -47,6 +47,8 @@ jobs:
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           projectName: gringo-connection
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
-          # Cloudflare Pages auto-detects Next.js and handles the build output
-          # Don't specify directory - let Cloudflare handle it
+          # Cloudflare Pages auto-detects Next.js in server mode
+          # workingDirectory tells Cloudflare where the Next.js app is
           workingDirectory: apps/web
+          # Note: Cloudflare Pages will auto-detect Next.js and build it
+          # Make sure CLOUDFLARE_API_TOKEN and CLOUDFLARE_ACCOUNT_ID secrets are set in GitHub

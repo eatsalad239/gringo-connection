@@ -4,6 +4,8 @@ import { useEffect, useState } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { ArrowRight, Sparkles, Zap, Globe } from 'lucide-react';
 import Link from 'next/link';
+import { GradientOrb } from './GradientOrb';
+import { MagneticButton } from './MagneticButton';
 
 interface HeroContent {
   title_en: string;
@@ -41,30 +43,9 @@ export function AnimatedHero({ content, locale }: { content: HeroContent; locale
       {/* Animated Background */}
       <div className="absolute inset-0">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(37,99,235,0.1),transparent_50%)]" />
-        <motion.div
-          animate={{
-            scale: [1, 1.2, 1],
-            rotate: [0, 90, 0],
-          }}
-          transition={{
-            duration: 20,
-            repeat: Infinity,
-            ease: 'linear',
-          }}
-          className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-500/20 rounded-full blur-3xl"
-        />
-        <motion.div
-          animate={{
-            scale: [1.2, 1, 1.2],
-            rotate: [90, 0, 90],
-          }}
-          transition={{
-            duration: 25,
-            repeat: Infinity,
-            ease: 'linear',
-          }}
-          className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl"
-        />
+        <GradientOrb size={500} color="blue" className="top-1/4 left-1/4" />
+        <GradientOrb size={450} color="purple" className="bottom-1/4 right-1/4" />
+        <GradientOrb size={300} color="pink" className="top-1/2 right-1/3" />
       </div>
 
       {/* Floating Particles */}
@@ -164,27 +145,18 @@ export function AnimatedHero({ content, locale }: { content: HeroContent; locale
             transition={{ delay: 0.7 }}
             className="flex flex-col sm:flex-row gap-4 justify-center items-center"
           >
-            <Link
+            <MagneticButton
               href={isEs ? '/es/contact' : '/contact'}
-              className="group relative px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full text-white font-semibold text-lg overflow-hidden"
+              variant="primary"
             >
-              <span className="relative z-10 flex items-center gap-2">
-                {content.ctaPrimary}
-                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-              </span>
-              <motion.div
-                className="absolute inset-0 bg-gradient-to-r from-purple-600 to-blue-600"
-                initial={{ x: '-100%' }}
-                whileHover={{ x: 0 }}
-                transition={{ duration: 0.3 }}
-              />
-            </Link>
-            <Link
+              {content.ctaPrimary}
+            </MagneticButton>
+            <MagneticButton
               href={isEs ? '/es/services' : '/services'}
-              className="px-8 py-4 bg-white/10 backdrop-blur-md rounded-full text-white font-semibold text-lg border border-white/20 hover:bg-white/20 transition-colors"
+              variant="secondary"
             >
               {content.ctaSecondary}
-            </Link>
+            </MagneticButton>
           </motion.div>
         </motion.div>
       </div>
