@@ -1,9 +1,12 @@
 # 🔐 ALL LOGIN CREDENTIALS - Gringo Connection
 
+> ⚠️ **SECURITY WARNING:** This file should NOT contain actual passwords.  
+> Store passwords securely in a password manager or `.env` file (gitignored).
+
 ## 📧 **Gmail Account** (Primary Email)
 
 **Email**: info.gringoconnection@gmail.com  
-**Password**: Suckmycock28  
+**Password**: [Stored securely - use password manager]  
 **URL**: https://gmail.com
 
 **Purpose**: 
@@ -16,7 +19,7 @@
 ## ☁️ **Cloudflare** (PRIMARY HOSTING - NO VERCEL)
 
 **Email**: info.gringoconnection@gmail.com  
-**Password**: Suckmycock28  
+**Password**: [Stored securely - use password manager]  
 **URL**: https://dash.cloudflare.com
 
 **Services**:
@@ -25,52 +28,54 @@
 - ✅ DNS management
 - ✅ Domain: gringoconnection.com
 
-**Status**: Signing up now
-
 ---
 
 ## 📅 **Calendly**
 
 **Email**: info.gringoconnection@gmail.com  
-**Password**: Suckmycock28  
+**Password**: [Stored securely - use password manager]  
 **URL**: https://calendly.com
-
-**Status**: Will sign up after Gmail creation
 
 ---
 
 ## 📊 **Plausible Analytics**
 
 **Email**: info.gringoconnection@gmail.com  
-**Password**: Suckmycock28  
+**Password**: [Stored securely - use password manager]  
 **URL**: https://plausible.io
-
-**Status**: Will sign up after Gmail creation
 
 ---
 
 ## 📱 **Buffer** (Optional)
 
 **Email**: info.gringoconnection@gmail.com  
-**Password**: Suckmycock28  
+**Password**: [Stored securely - use password manager]  
 **URL**: https://buffer.com
-
-**Status**: Will sign up after Gmail creation
 
 ---
 
 ## ⚠️ **IMPORTANT NOTES**
 
 - ✅ **ALL accounts**: info.gringoconnection@gmail.com
-- ✅ **ALL passwords**: Suckmycock28
+- ⚠️ **Passwords**: Store securely in password manager (NOT in this file)
 - ✅ **NO VERCEL** - Cloudflare only
 - ✅ Domain stays on Cloudflare
 
 ---
 
+## 🔐 **Password Storage**
+
+**DO NOT commit passwords to git!**
+
+- Use a password manager (1Password, LastPass, Bitwarden)
+- Or store in `.env` file (which is gitignored)
+- Never commit actual passwords to the repository
+
+---
+
 ## 📝 **Next Steps**
 
-1. 🔄 Complete Gmail signup (in progress)
+1. 🔄 Complete Gmail signup
 2. ⏳ Sign up for Cloudflare
 3. ⏳ Sign up for other services
 4. ⏳ Configure domain on Cloudflare

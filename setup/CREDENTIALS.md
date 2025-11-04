@@ -1,9 +1,12 @@
-# 🔐 Gringo Connection - All Account Credentials
+# 🔐 Gringo Connection - Account Credentials
+
+> ⚠️ **SECURITY NOTE:** This file should NOT contain actual passwords.  
+> Passwords should be stored securely in a password manager or `.env` file (gitignored).
 
 ## 📧 **Gmail Account**
 
 **Email**: info.gringoconnection@gmail.com  
-**Password**: Suckmycock28
+**Password**: [Stored securely - use password manager]
 
 **Used for**: All service signups and communications
 
@@ -12,7 +15,7 @@
 ## ☁️ **Cloudflare** (PRIMARY HOSTING - NOT VERCEL)
 
 **Email**: info.gringoconnection@gmail.com  
-**Password**: Suckmycock28  
+**Password**: [Stored securely - use password manager]  
 **URL**: https://dash.cloudflare.com
 
 **Purpose**:
@@ -26,45 +29,49 @@
 ## 📅 **Calendly**
 
 **Email**: info.gringoconnection@gmail.com  
-**Password**: Suckmycock28  
+**Password**: [Stored securely - use password manager]  
 **URL**: https://calendly.com
-
-**Status**: Signing up now
 
 ---
 
 ## 📊 **Plausible Analytics**
 
 **Email**: info.gringoconnection@gmail.com  
-**Password**: Suckmycock28  
+**Password**: [Stored securely - use password manager]  
 **URL**: https://plausible.io
-
-**Status**: Signing up now
 
 ---
 
 ## 📱 **Buffer** (Optional)
 
 **Email**: info.gringoconnection@gmail.com  
-**Password**: Suckmycock28  
+**Password**: [Stored securely - use password manager]  
 **URL**: https://buffer.com
-
-**Status**: Signing up now
 
 ---
 
 ## ⚠️ **IMPORTANT**
 
 - ✅ All accounts use: **info.gringoconnection@gmail.com**
-- ✅ All passwords: **Suckmycock28**
+- ⚠️ **Passwords**: Store securely in password manager (NOT in this file)
 - ✅ **NO VERCEL** - Using Cloudflare only
 - ✅ Domain will be on Cloudflare, not Vercel
 
 ---
 
+## 🔐 **Password Storage**
+
+**DO NOT commit passwords to git!**
+
+- Use a password manager (1Password, LastPass, Bitwarden)
+- Or store in `.env` file (which is gitignored)
+- Never commit actual passwords to the repository
+
+---
+
 ## 📝 **Next Steps**
 
-1. ✅ Gmail account creation (in progress)
+1. ✅ Gmail account creation
 2. 🔄 Cloudflare signup
 3. 🔄 Service signups
 4. 🔄 Domain setup on Cloudflare
