@@ -1,8 +1,9 @@
 #!/usr/bin/env tsx
 
 /**
- * Medellín Business Data Scraper
+ * Medellín Business Data Scraper with Rotating IPs
  * Automated scraping of business data from Google Maps for lead generation
+ * Uses rotating proxies to avoid detection and blocking
  */
 
 import { chromium } from 'playwright';
@@ -52,6 +53,69 @@ const HIGH_POTENTIAL_KEYWORDS = [
   'retail', 'shopping', 'tourism', 'education', 'university'
 ];
 
+// Rotating proxy configuration
+interface ProxyConfig {
+  server: string;
+  username?: string;
+  password?: string;
+}
+
+const PROXY_CONFIGS: ProxyConfig[] = [
+  // Bright Data (formerly Luminati)
+  ...(process.env.BRIGHT_DATA_USERNAME && process.env.BRIGHT_DATA_PASSWORD ? [{
+    server: `http://brd.superproxy.io:22225`,
+    username: process.env.BRIGHT_DATA_USERNAME,
+    password: process.env.BRIGHT_DATA_PASSWORD
+  }] : []),
+
+  // Oxylabs
+  ...(process.env.OXYLABS_USERNAME && process.env.OXYLABS_PASSWORD ? [{
+    server: `http://pr.oxylabs.io:7777`,
+    username: process.env.OXYLABS_USERNAME,
+    password: process.env.OXYLABS_PASSWORD
+  }] : []),
+
+  // Smart Proxy
+  ...(process.env.SMARTPROXY_USERNAME && process.env.SMARTPROXY_PASSWORD ? [{
+    server: `http://gate.smartproxy.com:7000`,
+    username: process.env.SMARTPROXY_USERNAME,
+    password: process.env.SMARTPROXY_PASSWORD
+  }] : []),
+
+  // Residential proxies (fallback)
+  ...(process.env.RESIDENTIAL_PROXY_URL ? [{
+    server: process.env.RESIDENTIAL_PROXY_URL
+  }] : [])
+];
+
+let currentProxyIndex = 0;
+
+function getNextProxy(): ProxyConfig | null {
+  if (PROXY_CONFIGS.length === 0) {
+    console.warn('⚠️ No proxy configurations found. Set environment variables:');
+    console.warn('   BRIGHT_DATA_USERNAME + BRIGHT_DATA_PASSWORD');
+    console.warn('   OXYLABS_USERNAME + OXYLABS_PASSWORD');
+    console.warn('   SMARTPROXY_USERNAME + SMARTPROXY_PASSWORD');
+    console.warn('   RESIDENTIAL_PROXY_URL');
+    return null;
+  }
+
+  const proxy = PROXY_CONFIGS[currentProxyIndex];
+  currentProxyIndex = (currentProxyIndex + 1) % PROXY_CONFIGS.length;
+  return proxy;
+}
+
+function getProxyForPlaywright(proxy: ProxyConfig) {
+  if (!proxy) return {};
+
+  const url = new URL(proxy.server);
+  return {
+    server: `${url.protocol}//${url.host}`,
+    username: proxy.username || '',
+    password: proxy.password || ''
+  };
+}
+
 // Calculate potential score based on business characteristics
 function calculatePotentialScore(business: Partial<BusinessData>): number {
   let score = 0;
@@ -86,97 +150,146 @@ function calculatePotentialScore(business: Partial<BusinessData>): number {
   return Math.min(score, 100);
 }
 
-// Scrape businesses from a single category
-async function scrapeCategory(category: string, browser: any): Promise<BusinessData[]> {
+// Scrape businesses from a single category with rotating proxies
+async function scrapeCategory(category: string): Promise<BusinessData[]> {
   console.log(`🔍 Scraping: ${category}`);
 
-  // Create context with user agent
-  const context = await browser.newContext({
-    userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
-  });
-
-  const page = await context.newPage();
   const businesses: BusinessData[] = [];
+  const maxRetries = 3;
+  let attempt = 0;
 
-  try {
-    // Navigate to Google Maps search
-    const searchUrl = `https://www.google.com/maps/search/${encodeURIComponent(category)}/@6.247637,-75.565816,12z`;
-    await page.goto(searchUrl, { waitUntil: 'domcontentloaded', timeout: 30000 });
+  while (attempt < maxRetries && businesses.length === 0) {
+    attempt++;
+    console.log(`   Attempt ${attempt}/${maxRetries}...`);
 
-    // Wait for results to load
-    await page.waitForTimeout(3000);
-
-    // Scroll down to load more results
-    for (let i = 0; i < 5; i++) {
-      await page.keyboard.press('PageDown');
-      await page.waitForTimeout(1000);
+    // Get next proxy for rotation
+    const proxy = getNextProxy();
+    if (!proxy) {
+      console.warn('   ⚠️ No proxy available, using direct connection');
+    } else {
+      console.log(`   🌐 Using proxy: ${proxy.server.split('://')[1].split(':')[0]}`);
     }
 
-    // Extract business data from the page
-    const businessElements = await page.$$('[role="article"], .Nv2PK, .THOPZb, [data-testid*="place-card"]');
+    // Create browser context with proxy
+    const proxyConfig = proxy ? getProxyForPlaywright(proxy) : {};
+    const context = await chromium.newContext({
+      userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+      ...proxyConfig
+    });
 
-    for (const element of businessElements.slice(0, 20)) {
-      try {
-        // Extract business name
-        const nameElement = await element.$('h3, [class*="fontHeadlineSmall"], .qBF1Pd, [data-testid*="name"]');
-        const name = nameElement ? await nameElement.textContent() : `Business ${businesses.length + 1}`;
+    const page = await context.newPage();
 
-        // Extract rating and reviews
-        const ratingElement = await element.$('[class*="fontDisplayLarge"], [aria-label*="stars"], [role="img"]');
-        let rating = '';
-        let reviews = '';
-        if (ratingElement) {
-          const ariaLabel = await ratingElement.getAttribute('aria-label') || '';
-          const ratingMatch = ariaLabel.match(/(\d+\.?\d*)\s+stars?/);
-          const reviewMatch = ariaLabel.match(/(\d+(?:,\d+)?)\s+reviews?/);
-          if (ratingMatch) rating = ratingMatch[1];
-          if (reviewMatch) reviews = reviewMatch[1].replace(',', '');
-        }
+    try {
+      // Navigate to Google Maps search
+      const searchUrl = `https://www.google.com/maps/search/${encodeURIComponent(category)}/@6.247637,-75.565816,12z`;
+      console.log(`   📍 Navigating to: ${searchUrl}`);
 
-        // Extract address
-        const addressElement = await element.$('[class*="fontBodyMedium"], .W4Efsd:last-child, [data-testid*="address"]');
-        const address = addressElement ? await addressElement.textContent() : 'Medellín, Colombia';
+      await page.goto(searchUrl, { waitUntil: 'domcontentloaded', timeout: 45000 });
 
-        // Extract category/type
-        const categoryText = category.replace(' medellin', '').replace(' companies', 's');
+      // Wait for results to load (longer for proxies)
+      await page.waitForTimeout(proxy ? 5000 : 3000);
 
-        // Create business object
-        const business: BusinessData = {
-          name: name?.trim() || `Business ${businesses.length + 1}`,
-          category: categoryText,
-          address: address?.trim() || 'Medellín, Colombia',
-          potentialScore: calculatePotentialScore({ name, category: categoryText, rating, reviews })
-        };
-
-        if (rating) business.rating = rating;
-        if (reviews) business.reviews = reviews;
-
-        // Simulate some businesses having websites (in real implementation, we'd extract actual URLs)
-        if (Math.random() > 0.6) {
-          const domainName = business.name.toLowerCase()
-            .replace(/[^a-z0-9]/g, '')
-            .substring(0, 20);
-          business.website = `https://www.${domainName}.com.co`;
-        }
-
-        businesses.push(business);
-
-      } catch (error) {
-        // Skip this business if extraction fails
+      // Check if we got blocked
+      const pageTitle = await page.title();
+      if (pageTitle.includes('blocked') || pageTitle.includes('captcha') || pageTitle.includes('unusual traffic')) {
+        console.log(`   🚫 Blocked by Google (attempt ${attempt}). Rotating proxy...`);
+        await context.close();
         continue;
       }
+
+      // Scroll down to load more results
+      console.log(`   📜 Loading more results...`);
+      for (let i = 0; i < 5; i++) {
+        await page.keyboard.press('PageDown');
+        await page.waitForTimeout(proxy ? 2000 : 1000);
+      }
+
+      // Extract business data from the page
+      const businessElements = await page.$$('[role="article"], .Nv2PK, .THOPZb, [data-testid*="place-card"]');
+
+      console.log(`   🔍 Found ${businessElements.length} business elements on page`);
+
+      for (const element of businessElements.slice(0, 20)) {
+        try {
+          // Extract business name
+          const nameElement = await element.$('h3, [class*="fontHeadlineSmall"], .qBF1Pd, [data-testid*="name"]');
+          const name = nameElement ? await nameElement.textContent() : `Business ${businesses.length + 1}`;
+
+          // Extract rating and reviews
+          const ratingElement = await element.$('[class*="fontDisplayLarge"], [aria-label*="stars"], [role="img"]');
+          let rating = '';
+          let reviews = '';
+          if (ratingElement) {
+            const ariaLabel = await ratingElement.getAttribute('aria-label') || '';
+            const ratingMatch = ariaLabel.match(/(\d+\.?\d*)\s+stars?/);
+            const reviewMatch = ariaLabel.match(/(\d+(?:,\d+)?)\s+reviews?/);
+            if (ratingMatch) rating = ratingMatch[1];
+            if (reviewMatch) reviews = reviewMatch[1].replace(',', '');
+          }
+
+          // Extract address
+          const addressElement = await element.$('[class*="fontBodyMedium"], .W4Efsd:last-child, [data-testid*="address"]');
+          const address = addressElement ? await addressElement.textContent() : 'Medellín, Colombia';
+
+          // Extract category/type
+          const categoryText = category.replace(' medellin', '').replace(' companies', 's');
+
+          // Create business object
+          const business: BusinessData = {
+            name: name?.trim() || `Business ${businesses.length + 1}`,
+            category: categoryText,
+            address: address?.trim() || 'Medellín, Colombia',
+            potentialScore: calculatePotentialScore({ name, category: categoryText, rating, reviews })
+          };
+
+          if (rating) business.rating = rating;
+          if (reviews) business.reviews = reviews;
+
+          // Simulate some businesses having websites (in real implementation, we'd extract actual URLs)
+          if (Math.random() > 0.6) {
+            const domainName = business.name.toLowerCase()
+              .replace(/[^a-z0-9]/g, '')
+              .substring(0, 20);
+            business.website = `https://www.${domainName}.com.co`;
+          }
+
+          businesses.push(business);
+
+        } catch (error) {
+          // Skip this business if extraction fails
+          continue;
+        }
+      }
+
+      console.log(`   ✅ Found ${businesses.length} businesses in ${category} (attempt ${attempt})`);
+
+      if (businesses.length > 0) {
+        await context.close();
+        return businesses;
+      }
+
+    } catch (error) {
+      console.error(`   ❌ Error on attempt ${attempt} for ${category}:`, error);
+
+      // If it's a proxy-related error, try next proxy
+      if (proxy && (error.message.includes('ECONNREFUSED') || error.message.includes('timeout'))) {
+        console.log(`   🔄 Proxy failed, trying next one...`);
+      }
+
+    } finally {
+      await page.close();
+      await context.close();
     }
 
-    console.log(`✅ Found ${businesses.length} businesses in ${category}`);
-    return businesses;
-
-  } catch (error) {
-    console.error(`❌ Error scraping ${category}:`, error);
-    return businesses;
-  } finally {
-    await page.close();
-    await context.close();
+    // Wait before retry
+    if (attempt < maxRetries) {
+      console.log(`   ⏳ Waiting 5 seconds before retry...`);
+      await new Promise(resolve => setTimeout(resolve, 5000));
+    }
   }
+
+  console.log(`❌ Failed to scrape ${category} after ${maxRetries} attempts`);
+  return businesses;
 }
 
 // Main scraping function
@@ -184,45 +297,27 @@ async function scrapeAllBusinesses(): Promise<BusinessData[]> {
   const allBusinesses: BusinessData[] = [];
   const startTime = Date.now();
 
-  console.log('🚀 Starting comprehensive Medellín business data scraping...\n');
+  console.log('🚀 Starting comprehensive Medellín business data scraping with rotating IPs...\n');
+  console.log(`🌐 Proxy rotation: ${PROXY_CONFIGS.length} proxies configured\n`);
 
-  // Launch browser
-  const browser = await chromium.launch({
-    headless: true,
-    args: [
-      '--no-sandbox',
-      '--disable-setuid-sandbox',
-      '--disable-dev-shm-usage',
-      '--disable-accelerated-2d-canvas',
-      '--no-first-run',
-      '--no-zygote',
-      '--disable-gpu'
-    ]
-  });
+  // Scrape each category
+  for (let i = 0; i < BUSINESS_CATEGORIES.length; i++) {
+    const category = BUSINESS_CATEGORIES[i];
+    console.log(`\n[${i + 1}/${BUSINESS_CATEGORIES.length}] ${category.toUpperCase()}`);
 
-  try {
-    // Scrape each category
-    for (let i = 0; i < BUSINESS_CATEGORIES.length; i++) {
-      const category = BUSINESS_CATEGORIES[i];
-      console.log(`\n[${i + 1}/${BUSINESS_CATEGORIES.length}] ${category.toUpperCase()}`);
+    const businesses = await scrapeCategory(category);
+    allBusinesses.push(...businesses);
 
-      const businesses = await scrapeCategory(category, browser);
-      allBusinesses.push(...businesses);
+    // Progress update
+    const elapsed = Math.round((Date.now() - startTime) / 1000);
+    const total = allBusinesses.length;
+    console.log(`📊 Progress: ${total} businesses scraped in ${elapsed}s`);
 
-      // Progress update
-      const elapsed = Math.round((Date.now() - startTime) / 1000);
-      const total = allBusinesses.length;
-      console.log(`📊 Progress: ${total} businesses scraped in ${elapsed}s`);
-
-      // Add delay between categories to avoid rate limiting
-      if (i < BUSINESS_CATEGORIES.length - 1) {
-        console.log('⏳ Waiting 3 seconds before next category...');
-        await new Promise(resolve => setTimeout(resolve, 3000));
-      }
+    // Add delay between categories to avoid rate limiting
+    if (i < BUSINESS_CATEGORIES.length - 1) {
+      console.log('⏳ Waiting 3 seconds before next category...');
+      await new Promise(resolve => setTimeout(resolve, 3000));
     }
-
-  } finally {
-    await browser.close();
   }
 
   // Remove duplicates based on name and address
@@ -384,21 +479,62 @@ const command = process.argv[2];
 
 switch (command) {
   case 'scrape':
-    main();
+    main().catch(console.error);
     break;
   case 'test':
     console.log('🧪 Testing scraper with first 3 categories...');
-    // Test with just first 3 categories
-    const testCategories = BUSINESS_CATEGORIES.slice(0, 3);
-    console.log('Test categories:', testCategories);
+    console.log('🌐 Proxy Configuration:');
+    if (PROXY_CONFIGS.length > 0) {
+      PROXY_CONFIGS.forEach((proxy, i) => {
+        const provider = proxy.server.includes('brd.superproxy.io') ? 'Bright Data' :
+                        proxy.server.includes('pr.oxylabs.io') ? 'Oxylabs' :
+                        proxy.server.includes('gate.smartproxy.com') ? 'Smart Proxy' : 'Custom';
+        console.log(`  ${i + 1}. ${provider}: ${proxy.server.split('://')[1].split(':')[0]}`);
+      });
+    } else {
+      console.log('  ⚠️ No proxies configured - using direct connection');
+      console.log('  💡 Set environment variables: BRIGHT_DATA_USERNAME, OXYLABS_USERNAME, SMARTPROXY_USERNAME, or RESIDENTIAL_PROXY_URL');
+    }
+    console.log('');
+
+    // Test with just first 3 categories by modifying the global array temporarily
+    const originalCategories = [...BUSINESS_CATEGORIES];
+    BUSINESS_CATEGORIES.splice(3); // Keep only first 3
+    console.log('Test categories:', BUSINESS_CATEGORIES);
+    console.log('🚀 Running test scrape...');
+    main().catch(console.error);
+    break;
+  case 'proxies':
+    console.log('🌐 Proxy Configuration Status:');
+    console.log(`Total proxies configured: ${PROXY_CONFIGS.length}`);
+    if (PROXY_CONFIGS.length > 0) {
+      PROXY_CONFIGS.forEach((proxy, i) => {
+        const provider = proxy.server.includes('brd.superproxy.io') ? 'Bright Data' :
+                        proxy.server.includes('pr.oxylabs.io') ? 'Oxylabs' :
+                        proxy.server.includes('gate.smartproxy.com') ? 'Smart Proxy' : 'Custom';
+        console.log(`  ${i + 1}. ${provider}: ${proxy.server}`);
+      });
+    } else {
+      console.log('❌ No proxies configured');
+      console.log('');
+      console.log('To configure proxies, set these environment variables:');
+      console.log('  BRIGHT_DATA_USERNAME + BRIGHT_DATA_PASSWORD');
+      console.log('  OXYLABS_USERNAME + OXYLABS_PASSWORD');
+      console.log('  SMARTPROXY_USERNAME + SMARTPROXY_PASSWORD');
+      console.log('  RESIDENTIAL_PROXY_URL');
+    }
     break;
   default:
-    console.log('🏙️ Medellín Business Scraper');
+    console.log('🏙️ Medellín Business Scraper with Rotating IPs');
     console.log('Usage: tsx medellin_business_scraper.ts [command]');
     console.log('');
     console.log('Commands:');
-    console.log('  scrape  - Scrape all business categories');
-    console.log('  test    - Test with first 3 categories only');
+    console.log('  scrape   - Scrape all business categories');
+    console.log('  test     - Test with first 3 categories only');
+    console.log('  proxies  - Check proxy configuration status');
+    console.log('');
+    console.log(`🌐 Proxies configured: ${PROXY_CONFIGS.length}`);
+    console.log(`📊 Business categories: ${BUSINESS_CATEGORIES.length}`);
     console.log('');
     console.log('Business categories to scrape:');
     BUSINESS_CATEGORIES.forEach((cat, i) => {
@@ -406,9 +542,6 @@ switch (command) {
     });
 }
 
-// Run the scraper if called directly
-if (import.meta.url === `file://${process.argv[1]}`) {
-  main();
-}
+// Note: Main execution is handled by the CLI switch above
 
 export { scrapeAllBusinesses, calculatePotentialScore, exportToCSV };

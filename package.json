@@ -46,7 +46,8 @@
     "outreach:launch-20-agents": "node --import tsx launch-20-business-outreach-agents.ts",
     "outreach:test-agent": "node --import tsx launch-20-business-outreach-agents.ts test",
     "scraper:medellin": "node --import tsx medellin_business_scraper.ts scrape",
-    "scraper:test": "node --import tsx medellin_business_scraper.ts test"
+    "scraper:test": "node --import tsx medellin_business_scraper.ts test",
+    "scraper:proxies": "node --import tsx medellin_business_scraper.ts proxies"
   },
   "dependencies": {
     "@huggingface/inference": "^2.6.4",
