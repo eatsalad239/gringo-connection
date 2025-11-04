@@ -42,7 +42,15 @@
     "swarm:website": "tsx automation/agents/websiteBuilderAgent.ts",
     "swarm:code": "tsx automation/agents/codingAssistantAgent.ts",
     "swarm:advice": "tsx automation/agents/adviceAgent.ts",
-    "swarm:creative": "tsx automation/agents/creativeSwarm.ts"
+    "swarm:creative": "tsx automation/agents/creativeSwarm.ts",
+    "medellin:start": "tsx scripts/launch-medellin-campaign.ts start",
+    "medellin:status": "tsx scripts/launch-medellin-campaign.ts status",
+    "medellin:stop": "tsx scripts/launch-medellin-campaign.ts stop",
+    "medellin:scrape": "tsx scripts/launch-medellin-campaign.ts scrape",
+    "medellin:generate": "tsx scripts/launch-medellin-campaign.ts generate",
+    "medellin:swarm": "tsx scripts/launch-medellin-campaign.ts swarm",
+    "medellin:campaign": "tsx automation/medellin-email-campaign.ts",
+    "medellin:scraper": "tsx automation/medellin-business-scraper.ts"
   },
   "dependencies": {
     "@huggingface/inference": "^2.6.4",
