@@ -26,7 +26,12 @@ jobs:
           cache: 'pnpm'
 
       - name: Install dependencies
-        run: pnpm install --frozen-lockfile
+        run: |
+          if [ -f pnpm-lock.yaml ]; then
+            pnpm install --frozen-lockfile
+          else
+            pnpm install
+          fi
 
       - name: Build web app
         working-directory: apps/web
@@ -43,6 +48,5 @@ jobs:
           projectName: gringo-connection
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
           directory: apps/web/.next
-          # For Next.js static export, use 'out' directory
-          # For Next.js server mode, use '.next' directory
-          # Cloudflare Pages will auto-detect Next.js
+          # For Next.js server mode, Cloudflare Pages auto-detects and uses Workers
+          # Directory points to .next build output
