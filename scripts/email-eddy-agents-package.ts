@@ -7,9 +7,11 @@ const EDDY_EMAIL = 'Eddy@doorknockingsucks.com';
 // Files to attach
 const filesToAttach = [
   'WINDOWS_SETUP.md',
+  'MAC_OPTIMIZED_AGENT_SWARM.md',
   'EDDY_DEV_AGENTS.md',
   'REVENUE_AGENTS_PLAN.md',
   'REVENUE_AGENTS_SETUP.md',
+  'ULTIMATE_AGENT_SWARM.md',
 ];
 
 // Read and attach files
@@ -60,7 +62,9 @@ const html = `
           ${attachments.map((att) => `<li><strong>${att.filename}</strong> - Complete guide</li>`).join('')}
         </ul>
         <p style="color: #166534; margin-top: 15px; font-size: 14px;">
-          💡 <strong>Start with WINDOWS_SETUP.md</strong> - it has everything you need to get running in 5 minutes!
+          💡 <strong>Start with:</strong><br>
+          • <strong>WINDOWS_SETUP.md</strong> - If you're on Windows (5 min setup)<br>
+          • <strong>MAC_OPTIMIZED_AGENT_SWARM.md</strong> - If you're on Mac (optimized for your machine)
         </p>
       </div>
       
@@ -68,17 +72,38 @@ const html = `
         🚀 Quick Start (5 Minutes)
       </h2>
       
-      <div style="background: #f9fafb; padding: 20px; border-radius: 8px; margin: 20px 0;">
+      <div style="background: #f0f9ff; border-left: 4px solid #2563eb; padding: 20px; margin: 20px 0; border-radius: 4px;">
+        <h3 style="color: #1e40af; margin-top: 0;">🍎 Mac Setup (Your Machine)</h3>
         <ol style="color: #1f2937; line-height: 2.5; padding-left: 20px;">
+          <li><strong>Install Ollama</strong>: <code style="background: #e5e7eb; padding: 2px 6px; border-radius: 4px;">brew install ollama</code></li>
+          <li><strong>Pull Models</strong>: 
+            <code style="background: #e5e7eb; padding: 2px 6px; border-radius: 4px;">ollama pull llama3.2:3b</code> (fast)<br>
+            <code style="background: #e5e7eb; padding: 2px 6px; border-radius: 4px;">ollama pull llama3:8b</code> (quality)
+          </li>
+          <li><strong>Configure</strong>: Add to <code>.env</code>:
+            <pre style="background: #1e293b; color: #e2e8f0; padding: 15px; border-radius: 8px; overflow-x: auto; margin-top: 10px;">LOCAL_LLM=true
+OLLAMA_URL=http://localhost:11434
+OLLAMA_MODEL_FAST=llama3.2:3b
+OLLAMA_MODEL_QUALITY=llama3:8b</pre>
+          </li>
+          <li><strong>Test It</strong>: Run <code style="background: #e5e7eb; padding: 2px 6px; border-radius: 4px;">pnpm agents:dev-helper</code></li>
+        </ol>
+        <p style="color: #1e40af; margin-top: 15px; font-size: 14px;">
+          ✅ <strong>Mac-optimized</strong> - Uses better models, leverages your 24GB RAM, stays fast!
+        </p>
+      </div>
+      
+      <div style="background: #f9fafb; padding: 20px; border-radius: 8px; margin: 20px 0;">
+        <h3 style="color: #6b7280; margin-top: 0;">🪟 Windows Setup (For Reference)</h3>
+        <ol style="color: #6b7280; line-height: 2.5; padding-left: 20px;">
           <li><strong>Install Ollama</strong>: Download from https://ollama.ai/download/windows</li>
-          <li><strong>Pull Model</strong>: Open PowerShell and run: <code style="background: #e5e7eb; padding: 2px 6px; border-radius: 4px;">ollama pull phi3:mini</code></li>
+          <li><strong>Pull Model</strong>: <code style="background: #e5e7eb; padding: 2px 6px; border-radius: 4px;">ollama pull phi3:mini</code></li>
           <li><strong>Configure</strong>: Add to <code>.env</code>:
             <pre style="background: #1e293b; color: #e2e8f0; padding: 15px; border-radius: 8px; overflow-x: auto; margin-top: 10px;">LOCAL_LLM=true
 OLLAMA_URL=http://localhost:11434
 OLLAMA_MODEL_FAST=phi3:mini
 OLLAMA_MODEL_QUALITY=phi3:mini</pre>
           </li>
-          <li><strong>Test It</strong>: Run <code style="background: #e5e7eb; padding: 2px 6px; border-radius: 4px;">pnpm agents:dev-helper</code></li>
         </ol>
       </div>
       
@@ -218,6 +243,9 @@ OLLAMA_MODEL_QUALITY=phi3:mini</pre>
 `;
 
 async function sendEmail() {
+  console.log(`\n📧 Sending email to ${EDDY_EMAIL}...`);
+  console.log(`📎 Attaching ${attachments.length} files...`);
+  
   const result = await mail.send({
     to: EDDY_EMAIL,
     subject: '🤖 Your AI Agent Army - Complete Setup & Best Practices',
@@ -226,14 +254,25 @@ async function sendEmail() {
   });
 
   if (result.ok) {
-    console.log(`✅ Email sent to ${EDDY_EMAIL}`);
+    console.log(`\n✅ ✅ ✅ EMAIL SENT SUCCESSFULLY ✅ ✅ ✅\n`);
+    console.log(`📧 Recipient: ${EDDY_EMAIL}`);
     console.log(`📎 Attached ${attachments.length} files:`);
-    attachments.forEach((att) => console.log(`   - ${att.filename}`));
+    attachments.forEach((att) => console.log(`   ✓ ${att.filename}`));
+    console.log(`\n📬 Email ID: ${result.id || 'N/A'}`);
+    console.log(`\n🎉 Eddy should receive the email with all guides attached!\n`);
   } else {
-    console.error(`❌ Failed to send email: ${result.reason}`);
+    console.error(`\n❌ ❌ ❌ FAILED TO SEND EMAIL ❌ ❌ ❌\n`);
+    console.error(`Reason: ${result.reason}`);
+    console.error(`\nPlease check:`);
+    console.error(`  1. RESEND_API_KEY is set in .env`);
+    console.error(`  2. Internet connection is working`);
+    console.error(`  3. Resend account is active\n`);
     process.exit(1);
   }
 }
 
-sendEmail().catch(console.error);
+sendEmail().catch((error) => {
+  console.error(`\n❌ Error sending email:`, error);
+  process.exit(1);
+});
 

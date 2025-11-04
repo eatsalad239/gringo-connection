@@ -29,6 +29,7 @@
     "agents:follow-up": "tsx automation/agents/followUpAgent.ts",
     "agents:upsell": "tsx automation/agents/upsellAgent.ts",
     "agents:swarm": "tsx automation/agents/swarmOrchestrator.ts",
+    "agents:performance": "tsx automation/agents/performanceMonitor.ts",
     "generate:code": "tsx automation/agents/codeGeneratorAgent.ts",
     "email:eddy-agents": "tsx scripts/email-eddy-agents-package.ts"
   },
