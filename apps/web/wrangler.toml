@@ -3,10 +3,17 @@
 
 name = "gringo-connection"
 compatibility_date = "2024-01-01"
+compatibility_flags = ["nodejs_compat"]
 
 # Pages build output directory (required for Pages deployments)
 # For Next.js server mode, output is .next (not out)
 pages_build_output_dir = ".next"
+
+# Build configuration for Next.js
+[build]
+command = "cd apps/web && pnpm install --frozen-lockfile && CF_PAGES=1 pnpm build"
+cwd = "."
+watch_dir = "apps/web"
 
 # D1 Database (Free SQLite)
 [[d1_databases]]
@@ -17,4 +24,14 @@ database_id = "" # Will be set after creating database via: wrangler d1 create g
 # Environment variables (set in Cloudflare dashboard)
 [env.production]
 # All env vars are set in Cloudflare Pages dashboard
+workers_dev = true
+
+# KV namespace for caching (optional)
+# [[kv_namespaces]]
+# binding = "CACHE"
+# id = "your-kv-id"
+
+# Rate limiting (optional)
+# [rate_limiting]
+# requests_per_hour = 1000
 
