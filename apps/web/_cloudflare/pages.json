@@ -1,8 +1,19 @@
 {
   "build": {
-    "command": "pnpm install --no-frozen-lockfile && CF_PAGES=1 pnpm build && rm -rf .next/cache .next/.cache || true",
+    "command": "cd apps/web && pnpm install --frozen-lockfile && CF_PAGES=1 pnpm build",
     "outputDirectory": ".next",
     "rootDirectory": "apps/web"
   },
-  "framework": "nextjs"
+  "framework": {
+    "name": "nextjs",
+    "version": "14.2.33"
+  },
+  "build_config": {
+    "build_command": "cd apps/web && CF_PAGES=1 pnpm build",
+    "destination_dir": ".next",
+    "root_dir": "apps/web",
+    "env": {
+      "NODE_VERSION": "18"
+    }
+  }
 }

@@ -6,6 +6,7 @@ import { Nav } from '@/components/Nav';
 import { Footer } from '@/components/Footer';
 import { WhatsAppFloat } from '@/components/WhatsAppFloat';
 import { ScrollToTop } from '@/components/ScrollToTop';
+import { ErrorBoundary } from '@/components/ErrorBoundary';
 import { getLocale } from '@/lib/locale';
 
 const inter = Inter({ subsets: ['latin'] });
@@ -92,10 +93,8 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-  params,
 }: {
   children: React.ReactNode;
-  params: { locale?: string };
 }) {
   // Get locale from headers (set by middleware) or default to 'en'
   const locale = getLocale();
@@ -179,7 +178,8 @@ export default function RootLayout({
   return (
     <html lang={locale} className="scroll-smooth">
       <head>
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+        <link rel="icon" href="/favicon.ico" sizes="any" />
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
@@ -211,11 +211,13 @@ export default function RootLayout({
         )}
       </head>
       <body className={`${inter.className} antialiased`}>
-        <Nav locale={locale} />
-        <main className="pt-16">{children}</main>
-        <Footer locale={locale} />
-        <WhatsAppFloat />
-        <ScrollToTop />
+        <ErrorBoundary>
+          <Nav locale={locale} />
+          <main className="pt-16" role="main">{children}</main>
+          <Footer locale={locale} />
+          <WhatsAppFloat />
+          <ScrollToTop />
+        </ErrorBoundary>
       </body>
     </html>
   );

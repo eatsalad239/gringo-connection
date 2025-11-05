@@ -7,6 +7,8 @@ const nextConfig = {
   images: {
     // Images are optimized by default in server mode
     formats: ['image/avif', 'image/webp'],
+    deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
+    imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
   },
   // i18n handled via route segments instead of next.config
   // Performance optimizations
@@ -16,6 +18,11 @@ const nextConfig = {
   productionBrowserSourceMaps: false,
   // Optimize fonts
   optimizeFonts: true,
+  // Experimental features for better performance
+  experimental: {
+    // Improve scrolling performance
+    scrollRestoration: true,
+  },
   // Cloudflare Pages: Disable cache generation to avoid 25MB file size limit
   webpack: (config, { isServer }) => {
     if (process.env.CI || process.env.CF_PAGES) {
@@ -24,10 +31,49 @@ const nextConfig = {
     }
     return config;
   },
-  // Cloudflare Pages: Explicitly set output directory
-  // This helps Cloudflare detect Next.js server mode
-  experimental: {
-    // Ensure Cloudflare can detect this as Next.js
+  // Headers for security and performance
+  async headers() {
+    return [
+      {
+        source: '/(.*)',
+        headers: [
+          {
+            key: 'X-Frame-Options',
+            value: 'DENY',
+          },
+          {
+            key: 'X-Content-Type-Options',
+            value: 'nosniff',
+          },
+          {
+            key: 'Referrer-Policy',
+            value: 'origin-when-cross-origin',
+          },
+          {
+            key: 'Permissions-Policy',
+            value: 'camera=(), microphone=(), geolocation=()',
+          },
+        ],
+      },
+      {
+        source: '/api/(.*)',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=300, s-maxage=600, stale-while-revalidate=86400',
+          },
+        ],
+      },
+      {
+        source: '/_next/static/(.*)',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, immutable',
+          },
+        ],
+      },
+    ];
   },
 };
 
