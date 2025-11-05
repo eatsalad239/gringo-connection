@@ -93,10 +93,8 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-  params,
 }: {
   children: React.ReactNode;
-  params: { locale?: string };
 }) {
   // Get locale from headers (set by middleware) or default to 'en'
   const locale = getLocale();

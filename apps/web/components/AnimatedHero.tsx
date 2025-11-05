@@ -3,7 +3,6 @@
 import { useEffect, useState } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { ArrowRight, Sparkles, Zap, Globe } from 'lucide-react';
-import Link from 'next/link';
 import { GradientOrb } from './GradientOrb';
 import { MagneticButton } from './MagneticButton';
 
@@ -18,6 +17,7 @@ interface HeroContent {
 
 export function AnimatedHero({ content, locale }: { content: HeroContent; locale: string }) {
   const isEs = locale === 'es';
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const { scrollY } = useScroll();
   const y = useTransform(scrollY, [0, 300], [0, -50]);
